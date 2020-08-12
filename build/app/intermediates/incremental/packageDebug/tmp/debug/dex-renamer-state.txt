@@ -1,4 +1,4 @@
-#Wed Aug 12 11:31:17 WEST 2020
-base.0=G\:\\My works\\blind-meal-flutter-app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Wed Aug 12 22:52:14 WEST 2020
+base.0=G\:\\My works\\blindmeal\\blind-meal-flutter-app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

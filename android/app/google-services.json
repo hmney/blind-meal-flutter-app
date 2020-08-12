@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "176602073121",
+    "firebase_url": "https://blind-meal.firebaseio.com",
+    "project_id": "blind-meal",
+    "storage_bucket": "blind-meal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176602073121:android:0c294964ef4abcd040fb60",
+        "android_client_info": {
+          "package_name": "com.blind.meal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176602073121-am762jopsd6hmemu0338f30fhajmhtra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnb2Aito8uH4z2gW9lwyRGc9HEd8G_gG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176602073121-am762jopsd6hmemu0338f30fhajmhtra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
