@@ -56,6 +56,12 @@
       "languageVersion": "2.9"
     },
     {
+      "name": "flutter_modular",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_modular-1.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -140,7 +146,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-08-12T10:36:01.594474Z",
+  "generated": "2020-08-12T21:59:43.942693Z",
   "generator": "pub",
   "generatorVersion": "2.9.0"
 }

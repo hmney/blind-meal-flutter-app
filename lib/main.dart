@@ -1,19 +1,5 @@
+import 'package:app/src/modules/app/module.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('initial the app'),
-    );
-  }
-}
+void main() => runApp(ModularApp(module: AppModule()));
