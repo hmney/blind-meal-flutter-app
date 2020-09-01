@@ -9,6 +9,9 @@ part 'user.g.dart';
 class User extends _User with _$User {
   String id, phone, email, country, profilePicture;
 
+  @JsonKey(defaultValue: false)
+  bool isSurveyFilled;
+
   @JsonKey(fromJson: _timeFromJson, toJson: _timeToJson)
   DateTime accountCreationTime;
 
@@ -19,6 +22,7 @@ class User extends _User with _$User {
     this.id,
     String firstName,
     String lastName,
+    this.isSurveyFilled = false,
     this.country,
     this.phone,
     this.email,
@@ -30,14 +34,16 @@ class User extends _User with _$User {
           lastName: lastName,
         );
 
-  factory User.createNewUser(
-      {String id,
-      String firstName,
-      String lastName,
-      String phone,
-      String email,
-      String country,
-      DateTime birthdate}) {
+  factory User.createNewUser({
+    String id,
+    String firstName,
+    String lastName,
+    String phone,
+    String email,
+    String country,
+    DateTime birthdate,
+    bool isSurveyFilled = false,
+  }) {
     return User(
       id: id,
       firstName: firstName,
@@ -47,6 +53,7 @@ class User extends _User with _$User {
       accountCreationTime: DateTime.now().toUtc(),
       country: country,
       birthdate: birthdate,
+      isSurveyFilled: isSurveyFilled,
     );
   }
 
@@ -59,7 +66,7 @@ class User extends _User with _$User {
   static DateTime _timeToJson(DateTime time) => time;
 
   String toString() {
-    return "id: ${this.id}, firstName: ${this.firstName}, lastName: ${this.lastName}, username: ${this.username}, phone: ${this.phone}, email: ${this.email}, country: ${this.country}, profilePicture: ${this.profilePicture}";
+    return "id: ${this.id}, firstName: ${this.firstName}, lastName: ${this.lastName}, username: ${this.username}, phone: ${this.phone}, email: ${this.email}, country: ${this.country}, profilePicture: ${this.profilePicture}, isSurveyFilled: ${this.isSurveyFilled}";
   }
 }
 
