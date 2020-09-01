@@ -9,6 +9,36 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AuthController on _AuthController, Store {
+  final _$countryPhoneAtom = Atom(name: '_AuthController.countryPhone');
+
+  @override
+  Country get countryPhone {
+    _$countryPhoneAtom.reportRead();
+    return super.countryPhone;
+  }
+
+  @override
+  set countryPhone(Country value) {
+    _$countryPhoneAtom.reportWrite(value, super.countryPhone, () {
+      super.countryPhone = value;
+    });
+  }
+
+  final _$countryResidenceAtom = Atom(name: '_AuthController.countryResidence');
+
+  @override
+  Country get countryResidence {
+    _$countryResidenceAtom.reportRead();
+    return super.countryResidence;
+  }
+
+  @override
+  set countryResidence(Country value) {
+    _$countryResidenceAtom.reportWrite(value, super.countryResidence, () {
+      super.countryResidence = value;
+    });
+  }
+
   final _$authStateAtom = Atom(name: '_AuthController.authState');
 
   @override
@@ -46,9 +76,20 @@ mixin _$AuthController on _AuthController, Store {
     return _$addEventAsyncAction.run(() => super.addEvent(event));
   }
 
+  final _$authenticationAsyncAction =
+      AsyncAction('_AuthController.authentication');
+
+  @override
+  Future<void> authentication(AUTHENTICATION authentication) {
+    return _$authenticationAsyncAction
+        .run(() => super.authentication(authentication));
+  }
+
   @override
   String toString() {
     return '''
+countryPhone: ${countryPhone},
+countryResidence: ${countryResidence},
 authState: ${authState},
 currentUser: ${currentUser}
     ''';

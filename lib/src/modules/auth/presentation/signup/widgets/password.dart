@@ -1,10 +1,10 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/presentation/signup/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PasswordField extends StatefulWidget {
-  final SignupController controller;
+  final AuthController controller;
   PasswordField({Key key, this.controller}) : super(key: key);
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -12,7 +12,7 @@ class PasswordField extends StatefulWidget {
 
 class _PasswordFieldState extends State<PasswordField> {
   final _passwordController = TextEditingController();
-  SignupController get _controller => widget.controller;
+  AuthController get _controller => widget.controller;
   bool _isObscure = true;
   String _validatorPassword(String value) {
     if (value.isEmpty || value.length < 8)

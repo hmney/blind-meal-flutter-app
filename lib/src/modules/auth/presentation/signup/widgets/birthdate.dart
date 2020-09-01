@@ -1,10 +1,10 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/presentation/signup/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class BirthdateField extends StatefulWidget {
-  final SignupController controller;
+  final AuthController controller;
   BirthdateField({Key key, this.controller}) : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class BirthdateField extends StatefulWidget {
 
 class _BirthdateFieldState extends State<BirthdateField> {
   final _birthdateController = TextEditingController();
-  SignupController get _controller => widget.controller;
+  AuthController get _controller => widget.controller;
   var _birthdate;
   String _validatorBirthdate(String value) {
     if (value.isEmpty) return 'Enter your birthdate';

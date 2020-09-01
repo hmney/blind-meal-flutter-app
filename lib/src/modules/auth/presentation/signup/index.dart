@@ -1,5 +1,5 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/presentation/signup/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/signup/widgets/birthdate.dart';
 import 'package:app/src/modules/auth/presentation/signup/widgets/country_list.dart';
 import 'package:app/src/modules/auth/presentation/signup/widgets/email.dart';
@@ -15,14 +15,14 @@ class SignupScreen extends StatefulWidget {
   _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends ModularState<SignupScreen, SignupController> {
+class _SignupScreenState extends ModularState<SignupScreen, AuthController> {
   final _formKey = GlobalKey<FormState>();
   final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
+      key: controller.signupScaffoldKey,
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: false,
       backgroundColor: AppTheme.backgroundColor,
@@ -45,7 +45,7 @@ class _SignupScreenState extends ModularState<SignupScreen, SignupController> {
                         Container(
                           alignment: Alignment.centerLeft,
                           child: const Text(
-                            'Signu Up',
+                            'Sign Up',
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: 'Roboto',
@@ -84,10 +84,10 @@ class _SignupScreenState extends ModularState<SignupScreen, SignupController> {
                       height: 50,
                       child: RaisedButton(
                         onPressed: () async {
-                          print('hi');
                           if (_formKey.currentState.validate()) {
                             _formKey.currentState.save();
-                            await controller.signUp();
+                            await controller
+                                .authentication(AUTHENTICATION.SIGN_UP);
                           }
                         },
                         color: AppTheme.primaryColor,

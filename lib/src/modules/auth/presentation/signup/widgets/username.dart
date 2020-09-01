@@ -1,10 +1,10 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/presentation/signup/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class NameField extends StatefulWidget {
-  final SignupController controller;
+  final AuthController controller;
   NameField({Key key, this.controller}) : super(key: key);
 
   @override
@@ -14,7 +14,7 @@ class NameField extends StatefulWidget {
 class _NameFieldState extends State<NameField> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  SignupController get _controller => widget.controller;
+  AuthController get _controller => widget.controller;
 
   String _validatorFirstName(String value) {
     if (value.isEmpty || value.length < 3) return 'First name not valid';

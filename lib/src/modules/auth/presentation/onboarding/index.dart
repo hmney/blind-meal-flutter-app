@@ -1,5 +1,6 @@
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/module.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/onboarding/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -102,7 +103,8 @@ class _OnboardingScreensState
             padding: EdgeInsets.only(top: 50),
             child: FlatButton(
               child: Text('skip'),
-              onPressed: () => AuthModule.toLoginScreen(),
+              onPressed: () => Modular.get<AuthController>().authState =
+                  AuthState.loggedOut(),
             ),
           ),
         ],

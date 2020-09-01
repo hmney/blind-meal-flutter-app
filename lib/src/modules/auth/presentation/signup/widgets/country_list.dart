@@ -1,11 +1,11 @@
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/module.dart';
-import 'package:app/src/modules/auth/presentation/signup/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class CountryField extends StatefulWidget {
-  final SignupController controller;
+  final AuthController controller;
   CountryField({Key key, this.controller}) : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class CountryField extends StatefulWidget {
 class _CountryFieldState extends State<CountryField> {
   final _countryListController = TextEditingController();
 
-  SignupController get _controller => widget.controller;
+  AuthController get _controller => widget.controller;
   String _validatorCountryList(String value) {
     if (value.isEmpty) return 'Enter your country';
     return null;

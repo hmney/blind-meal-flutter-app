@@ -1,4 +1,4 @@
-import 'package:app/src/modules/auth/presentation/auth/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -20,7 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Text('Home Screen'),
             FlatButton(
               child: Text('Log out'),
-              onPressed: () => _controller.addEvent(AuthEvent.logout()),
+              onPressed: () async {
+                Modular.to.popUntil((r) => r.isFirst);
+                await _controller.addEvent(AuthEvent.logout());
+              },
             )
           ],
         ),

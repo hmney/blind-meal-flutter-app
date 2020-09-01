@@ -25,6 +25,11 @@ class _$AuthEventTearOff {
   }
 
 // ignore: unused_element
+  GoHome goHome() {
+    return const GoHome();
+  }
+
+// ignore: unused_element
   Logout logout() {
     return const Logout();
   }
@@ -38,12 +43,14 @@ mixin _$AuthEvent {
   Result when<Result extends Object>({
     @required Result appStarted(),
     @required Result loggedIn(String uid),
+    @required Result goHome(),
     @required Result logout(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result appStarted(),
     Result loggedIn(String uid),
+    Result goHome(),
     Result logout(),
     @required Result orElse(),
   });
@@ -51,12 +58,14 @@ mixin _$AuthEvent {
   Result map<Result extends Object>({
     @required Result appStarted(AppStarted value),
     @required Result loggedIn(LoggedIn value),
+    @required Result goHome(GoHome value),
     @required Result logout(Logout value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result appStarted(AppStarted value),
     Result loggedIn(LoggedIn value),
+    Result goHome(GoHome value),
     Result logout(Logout value),
     @required Result orElse(),
   });
@@ -111,10 +120,12 @@ class _$AppStarted implements AppStarted {
   Result when<Result extends Object>({
     @required Result appStarted(),
     @required Result loggedIn(String uid),
+    @required Result goHome(),
     @required Result logout(),
   }) {
     assert(appStarted != null);
     assert(loggedIn != null);
+    assert(goHome != null);
     assert(logout != null);
     return appStarted();
   }
@@ -124,6 +135,7 @@ class _$AppStarted implements AppStarted {
   Result maybeWhen<Result extends Object>({
     Result appStarted(),
     Result loggedIn(String uid),
+    Result goHome(),
     Result logout(),
     @required Result orElse(),
   }) {
@@ -139,10 +151,12 @@ class _$AppStarted implements AppStarted {
   Result map<Result extends Object>({
     @required Result appStarted(AppStarted value),
     @required Result loggedIn(LoggedIn value),
+    @required Result goHome(GoHome value),
     @required Result logout(Logout value),
   }) {
     assert(appStarted != null);
     assert(loggedIn != null);
+    assert(goHome != null);
     assert(logout != null);
     return appStarted(this);
   }
@@ -152,6 +166,7 @@ class _$AppStarted implements AppStarted {
   Result maybeMap<Result extends Object>({
     Result appStarted(AppStarted value),
     Result loggedIn(LoggedIn value),
+    Result goHome(GoHome value),
     Result logout(Logout value),
     @required Result orElse(),
   }) {
@@ -223,10 +238,12 @@ class _$LoggedIn implements LoggedIn {
   Result when<Result extends Object>({
     @required Result appStarted(),
     @required Result loggedIn(String uid),
+    @required Result goHome(),
     @required Result logout(),
   }) {
     assert(appStarted != null);
     assert(loggedIn != null);
+    assert(goHome != null);
     assert(logout != null);
     return loggedIn(uid);
   }
@@ -236,6 +253,7 @@ class _$LoggedIn implements LoggedIn {
   Result maybeWhen<Result extends Object>({
     Result appStarted(),
     Result loggedIn(String uid),
+    Result goHome(),
     Result logout(),
     @required Result orElse(),
   }) {
@@ -251,10 +269,12 @@ class _$LoggedIn implements LoggedIn {
   Result map<Result extends Object>({
     @required Result appStarted(AppStarted value),
     @required Result loggedIn(LoggedIn value),
+    @required Result goHome(GoHome value),
     @required Result logout(Logout value),
   }) {
     assert(appStarted != null);
     assert(loggedIn != null);
+    assert(goHome != null);
     assert(logout != null);
     return loggedIn(this);
   }
@@ -264,6 +284,7 @@ class _$LoggedIn implements LoggedIn {
   Result maybeMap<Result extends Object>({
     Result appStarted(AppStarted value),
     Result loggedIn(LoggedIn value),
+    Result goHome(GoHome value),
     Result logout(Logout value),
     @required Result orElse(),
   }) {
@@ -280,6 +301,103 @@ abstract class LoggedIn implements AuthEvent {
 
   String get uid;
   $LoggedInCopyWith<LoggedIn> get copyWith;
+}
+
+abstract class $GoHomeCopyWith<$Res> {
+  factory $GoHomeCopyWith(GoHome value, $Res Function(GoHome) then) =
+      _$GoHomeCopyWithImpl<$Res>;
+}
+
+class _$GoHomeCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements $GoHomeCopyWith<$Res> {
+  _$GoHomeCopyWithImpl(GoHome _value, $Res Function(GoHome) _then)
+      : super(_value, (v) => _then(v as GoHome));
+
+  @override
+  GoHome get _value => super._value as GoHome;
+}
+
+class _$GoHome implements GoHome {
+  const _$GoHome();
+
+  @override
+  String toString() {
+    return 'AuthEvent.goHome()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GoHome);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result appStarted(),
+    @required Result loggedIn(String uid),
+    @required Result goHome(),
+    @required Result logout(),
+  }) {
+    assert(appStarted != null);
+    assert(loggedIn != null);
+    assert(goHome != null);
+    assert(logout != null);
+    return goHome();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result appStarted(),
+    Result loggedIn(String uid),
+    Result goHome(),
+    Result logout(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (goHome != null) {
+      return goHome();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result appStarted(AppStarted value),
+    @required Result loggedIn(LoggedIn value),
+    @required Result goHome(GoHome value),
+    @required Result logout(Logout value),
+  }) {
+    assert(appStarted != null);
+    assert(loggedIn != null);
+    assert(goHome != null);
+    assert(logout != null);
+    return goHome(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result appStarted(AppStarted value),
+    Result loggedIn(LoggedIn value),
+    Result goHome(GoHome value),
+    Result logout(Logout value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (goHome != null) {
+      return goHome(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoHome implements AuthEvent {
+  const factory GoHome() = _$GoHome;
 }
 
 abstract class $LogoutCopyWith<$Res> {
@@ -317,10 +435,12 @@ class _$Logout implements Logout {
   Result when<Result extends Object>({
     @required Result appStarted(),
     @required Result loggedIn(String uid),
+    @required Result goHome(),
     @required Result logout(),
   }) {
     assert(appStarted != null);
     assert(loggedIn != null);
+    assert(goHome != null);
     assert(logout != null);
     return logout();
   }
@@ -330,6 +450,7 @@ class _$Logout implements Logout {
   Result maybeWhen<Result extends Object>({
     Result appStarted(),
     Result loggedIn(String uid),
+    Result goHome(),
     Result logout(),
     @required Result orElse(),
   }) {
@@ -345,10 +466,12 @@ class _$Logout implements Logout {
   Result map<Result extends Object>({
     @required Result appStarted(AppStarted value),
     @required Result loggedIn(LoggedIn value),
+    @required Result goHome(GoHome value),
     @required Result logout(Logout value),
   }) {
     assert(appStarted != null);
     assert(loggedIn != null);
+    assert(goHome != null);
     assert(logout != null);
     return logout(this);
   }
@@ -358,6 +481,7 @@ class _$Logout implements Logout {
   Result maybeMap<Result extends Object>({
     Result appStarted(AppStarted value),
     Result loggedIn(LoggedIn value),
+    Result goHome(GoHome value),
     Result logout(Logout value),
     @required Result orElse(),
   }) {
@@ -395,6 +519,11 @@ class _$AuthStateTearOff {
   LoggedOut loggedOut() {
     return const LoggedOut();
   }
+
+// ignore: unused_element
+  SurveyNotFilled surveyNotFilled() {
+    return const SurveyNotFilled();
+  }
 }
 
 // ignore: unused_element
@@ -407,6 +536,7 @@ mixin _$AuthState {
     @required Result authenticated(),
     @required Result unauthenticated(),
     @required Result loggedOut(),
+    @required Result surveyNotFilled(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -414,6 +544,7 @@ mixin _$AuthState {
     Result authenticated(),
     Result unauthenticated(),
     Result loggedOut(),
+    Result surveyNotFilled(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -422,6 +553,7 @@ mixin _$AuthState {
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
     @required Result loggedOut(LoggedOut value),
+    @required Result surveyNotFilled(SurveyNotFilled value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -429,6 +561,7 @@ mixin _$AuthState {
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
     Result loggedOut(LoggedOut value),
+    Result surveyNotFilled(SurveyNotFilled value),
     @required Result orElse(),
   });
 }
@@ -485,11 +618,13 @@ class _$AuthInitial implements AuthInitial {
     @required Result authenticated(),
     @required Result unauthenticated(),
     @required Result loggedOut(),
+    @required Result surveyNotFilled(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return initial();
   }
 
@@ -500,6 +635,7 @@ class _$AuthInitial implements AuthInitial {
     Result authenticated(),
     Result unauthenticated(),
     Result loggedOut(),
+    Result surveyNotFilled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -516,11 +652,13 @@ class _$AuthInitial implements AuthInitial {
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
     @required Result loggedOut(LoggedOut value),
+    @required Result surveyNotFilled(SurveyNotFilled value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return initial(this);
   }
 
@@ -531,6 +669,7 @@ class _$AuthInitial implements AuthInitial {
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
     Result loggedOut(LoggedOut value),
+    Result surveyNotFilled(SurveyNotFilled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -584,11 +723,13 @@ class _$Authenticated implements Authenticated {
     @required Result authenticated(),
     @required Result unauthenticated(),
     @required Result loggedOut(),
+    @required Result surveyNotFilled(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return authenticated();
   }
 
@@ -599,6 +740,7 @@ class _$Authenticated implements Authenticated {
     Result authenticated(),
     Result unauthenticated(),
     Result loggedOut(),
+    Result surveyNotFilled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -615,11 +757,13 @@ class _$Authenticated implements Authenticated {
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
     @required Result loggedOut(LoggedOut value),
+    @required Result surveyNotFilled(SurveyNotFilled value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return authenticated(this);
   }
 
@@ -630,6 +774,7 @@ class _$Authenticated implements Authenticated {
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
     Result loggedOut(LoggedOut value),
+    Result surveyNotFilled(SurveyNotFilled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -683,11 +828,13 @@ class _$Unauthenticated implements Unauthenticated {
     @required Result authenticated(),
     @required Result unauthenticated(),
     @required Result loggedOut(),
+    @required Result surveyNotFilled(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return unauthenticated();
   }
 
@@ -698,6 +845,7 @@ class _$Unauthenticated implements Unauthenticated {
     Result authenticated(),
     Result unauthenticated(),
     Result loggedOut(),
+    Result surveyNotFilled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -714,11 +862,13 @@ class _$Unauthenticated implements Unauthenticated {
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
     @required Result loggedOut(LoggedOut value),
+    @required Result surveyNotFilled(SurveyNotFilled value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return unauthenticated(this);
   }
 
@@ -729,6 +879,7 @@ class _$Unauthenticated implements Unauthenticated {
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
     Result loggedOut(LoggedOut value),
+    Result surveyNotFilled(SurveyNotFilled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -780,11 +931,13 @@ class _$LoggedOut implements LoggedOut {
     @required Result authenticated(),
     @required Result unauthenticated(),
     @required Result loggedOut(),
+    @required Result surveyNotFilled(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return loggedOut();
   }
 
@@ -795,6 +948,7 @@ class _$LoggedOut implements LoggedOut {
     Result authenticated(),
     Result unauthenticated(),
     Result loggedOut(),
+    Result surveyNotFilled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -811,11 +965,13 @@ class _$LoggedOut implements LoggedOut {
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
     @required Result loggedOut(LoggedOut value),
+    @required Result surveyNotFilled(SurveyNotFilled value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     assert(loggedOut != null);
+    assert(surveyNotFilled != null);
     return loggedOut(this);
   }
 
@@ -826,6 +982,7 @@ class _$LoggedOut implements LoggedOut {
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
     Result loggedOut(LoggedOut value),
+    Result surveyNotFilled(SurveyNotFilled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -838,4 +995,109 @@ class _$LoggedOut implements LoggedOut {
 
 abstract class LoggedOut implements AuthState {
   const factory LoggedOut() = _$LoggedOut;
+}
+
+abstract class $SurveyNotFilledCopyWith<$Res> {
+  factory $SurveyNotFilledCopyWith(
+          SurveyNotFilled value, $Res Function(SurveyNotFilled) then) =
+      _$SurveyNotFilledCopyWithImpl<$Res>;
+}
+
+class _$SurveyNotFilledCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements $SurveyNotFilledCopyWith<$Res> {
+  _$SurveyNotFilledCopyWithImpl(
+      SurveyNotFilled _value, $Res Function(SurveyNotFilled) _then)
+      : super(_value, (v) => _then(v as SurveyNotFilled));
+
+  @override
+  SurveyNotFilled get _value => super._value as SurveyNotFilled;
+}
+
+class _$SurveyNotFilled implements SurveyNotFilled {
+  const _$SurveyNotFilled();
+
+  @override
+  String toString() {
+    return 'AuthState.surveyNotFilled()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is SurveyNotFilled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result authenticated(),
+    @required Result unauthenticated(),
+    @required Result loggedOut(),
+    @required Result surveyNotFilled(),
+  }) {
+    assert(initial != null);
+    assert(authenticated != null);
+    assert(unauthenticated != null);
+    assert(loggedOut != null);
+    assert(surveyNotFilled != null);
+    return surveyNotFilled();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result authenticated(),
+    Result unauthenticated(),
+    Result loggedOut(),
+    Result surveyNotFilled(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (surveyNotFilled != null) {
+      return surveyNotFilled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(AuthInitial value),
+    @required Result authenticated(Authenticated value),
+    @required Result unauthenticated(Unauthenticated value),
+    @required Result loggedOut(LoggedOut value),
+    @required Result surveyNotFilled(SurveyNotFilled value),
+  }) {
+    assert(initial != null);
+    assert(authenticated != null);
+    assert(unauthenticated != null);
+    assert(loggedOut != null);
+    assert(surveyNotFilled != null);
+    return surveyNotFilled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(AuthInitial value),
+    Result authenticated(Authenticated value),
+    Result unauthenticated(Unauthenticated value),
+    Result loggedOut(LoggedOut value),
+    Result surveyNotFilled(SurveyNotFilled value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (surveyNotFilled != null) {
+      return surveyNotFilled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SurveyNotFilled implements AuthState {
+  const factory SurveyNotFilled() = _$SurveyNotFilled;
 }

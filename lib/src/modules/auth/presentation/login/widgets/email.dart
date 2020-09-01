@@ -1,11 +1,11 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/presentation/login/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:email_validator/email_validator.dart';
 
 class EmailField extends StatefulWidget {
-  final LoginController controller;
+  final AuthController controller;
   EmailField({Key key, this.controller}) : super(key: key);
   @override
   _EmailFieldState createState() => _EmailFieldState();
@@ -13,7 +13,7 @@ class EmailField extends StatefulWidget {
 
 class _EmailFieldState extends State<EmailField> {
   final _emailController = TextEditingController();
-  LoginController get _controller => widget.controller;
+  AuthController get _controller => widget.controller;
 
   String _validatorEmail(String value) {
     if (!EmailValidator.validate(value)) return 'Please enter a valid Email';

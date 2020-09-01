@@ -1,12 +1,12 @@
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/module.dart';
-import 'package:app/src/modules/auth/presentation/signup/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class PhoneFormWidget extends StatefulWidget {
-  final SignupController controller;
+  final AuthController controller;
   PhoneFormWidget({Key key, this.controller}) : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class PhoneFormWidget extends StatefulWidget {
 
 class _PhoneFormWidgetState extends State<PhoneFormWidget> {
   final _phoneController = TextEditingController();
-  SignupController get _controller => widget.controller;
+  AuthController get _controller => widget.controller;
 
   String _validatorPhoneNumber(String value) {
     if (value.isEmpty || value.length < 9) return 'Enter a valid phone number';

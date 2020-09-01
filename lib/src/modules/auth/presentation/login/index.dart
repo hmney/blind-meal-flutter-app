@@ -1,5 +1,5 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/presentation/login/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/login/widgets/email.dart';
 import 'package:app/src/modules/auth/presentation/login/widgets/password.dart';
 import 'package:app/src/modules/auth/presentation/login/widgets/signup.dart';
@@ -13,13 +13,13 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ModularState<LoginScreen, LoginController> {
+class _LoginScreenState extends ModularState<LoginScreen, AuthController> {
   final _scrollController = ScrollController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: controller.scaffoldKey,
+      key: controller.loginScaffoldKey,
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: false,
       backgroundColor: AppTheme.backgroundColor,
@@ -52,7 +52,8 @@ class _LoginScreenState extends ModularState<LoginScreen, LoginController> {
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
-                          await controller.signIn();
+                          await controller
+                              .authentication(AUTHENTICATION.SIGN_IN);
                         }
                       },
                       color: AppTheme.primaryColor,
@@ -82,13 +83,13 @@ class _LoginScreenState extends ModularState<LoginScreen, LoginController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset(
-                        'assets/social_media/facebook_icon.svg',
+                        'assets/icons/social_media/facebook_icon.svg',
                         width: 26,
                         height: 26,
                       ),
                       SizedBox(width: 20),
                       SvgPicture.asset(
-                        'assets/social_media/google_icon.svg',
+                        'assets/icons/social_media/google_icon.svg',
                         width: 26,
                         height: 26,
                       ),

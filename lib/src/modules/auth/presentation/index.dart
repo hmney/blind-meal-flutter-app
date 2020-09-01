@@ -1,7 +1,8 @@
 import 'package:app/src/modules/app/presentation/home.dart';
-import 'package:app/src/modules/auth/presentation/auth/controller.dart';
+import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/login/index.dart';
 import 'package:app/src/modules/auth/presentation/onboarding/index.dart';
+import 'package:app/src/modules/auth/presentation/survey/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -25,6 +26,7 @@ class _AuthScreenState extends ModularState<AuthScreen, AuthController> {
         initial: () => Container(),
         authenticated: () => HomeScreen(),
         unauthenticated: () => OnboardingScreens(),
+        surveyNotFilled: () => SurveyScreen(),
         loggedOut: () => LoginScreen(),
       ),
     );
