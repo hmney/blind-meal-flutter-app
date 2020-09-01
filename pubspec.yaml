@@ -30,7 +30,9 @@ dependencies:
   flutter_sim_country_code: ^0.0.3
   country_provider: ^0.0.1
   country_icons: ^1.1.1
-  password: ^1.0.0
+  percent_indicator: ^2.1.5
+  device_preview: ^0.4.8
+
 
 
 
@@ -38,7 +40,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^1.7.2
-  mobx_codegen: ^1.0.0  
+  mobx_codegen: ^1.0.0 
 
 flutter:
   uses-material-design: true
@@ -48,3 +50,6 @@ flutter:
     - assets/onboarding/
     - assets/logo/
     - assets/icons/
+    - assets/icons/social_media/
+    - assets/images/
+    - assets/images/diets/

@@ -14,6 +14,7 @@ MERGED from [:cloud_firestore_web] G:\My works\blindmeal\blind-meal-flutter-app\
 MERGED from [:firebase_core] G:\My works\blindmeal\blind-meal-flutter-app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core_web] G:\My works\blindmeal\blind-meal-flutter-app\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_analytics] G:\My works\blindmeal\blind-meal-flutter-app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:shared_preferences] G:\My works\blindmeal\blind-meal-flutter-app\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\hmney\.gradle\caches\transforms-2\files-2.1\dfbc112547af275e5218364b79c122c5\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] C:\Users\hmney\.gradle\caches\transforms-2\files-2.1\c69b4b88fda61510af337509f74d0b15\firebase-analytics-17.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\hmney\.gradle\caches\transforms-2\files-2.1\ef539cb47cac23be7ee287bc44c1d078\firebase-auth-19.2.0\AndroidManifest.xml:17:1-42:12
@@ -211,6 +212,8 @@ MERGED from [:firebase_core_web] G:\My works\blindmeal\blind-meal-flutter-app\bu
 MERGED from [:firebase_core_web] G:\My works\blindmeal\blind-meal-flutter-app\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_analytics] G:\My works\blindmeal\blind-meal-flutter-app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_analytics] G:\My works\blindmeal\blind-meal-flutter-app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] G:\My works\blindmeal\blind-meal-flutter-app\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] G:\My works\blindmeal\blind-meal-flutter-app\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\hmney\.gradle\caches\transforms-2\files-2.1\dfbc112547af275e5218364b79c122c5\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\hmney\.gradle\caches\transforms-2\files-2.1\dfbc112547af275e5218364b79c122c5\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] C:\Users\hmney\.gradle\caches\transforms-2\files-2.1\c69b4b88fda61510af337509f74d0b15\firebase-analytics-17.2.0\AndroidManifest.xml:5:5-44
