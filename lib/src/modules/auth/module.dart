@@ -10,7 +10,6 @@ import 'package:app/src/modules/auth/presentation/onboarding/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/index.dart';
 import 'package:country_provider/country_provider.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AuthModule extends ChildModule {
@@ -18,7 +17,6 @@ class AuthModule extends ChildModule {
   List<Bind> get binds => [
         Bind((i) => AuthRepositoryImplementation()),
         Bind((i) => UserRepositoryImplementation()),
-        Bind((i) => FirebaseAnalytics()),
         Bind((i) => AuthController()),
         Bind((i) => OnboardingController()),
         Bind((i) => SurveyController()),

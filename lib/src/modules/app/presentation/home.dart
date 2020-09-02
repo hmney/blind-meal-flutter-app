@@ -1,5 +1,6 @@
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
+import 'package:app/src/modules/order/module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -23,30 +24,33 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.16),
-                blurRadius: 6,
-                offset: Offset(0, 3),
-              )
-            ],
-          ),
-          child: Center(
-              child: Text(
-            "I'm hungry",
-            style: TextStyle(
-              color: AppTheme.primaryColor,
-              fontFamily: 'Georgia',
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
+        child: GestureDetector(
+          onTap: () => OrderModule.toOrderScreen(),
+          child: Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.16),
+                  blurRadius: 6,
+                  offset: Offset(0, 3),
+                )
+              ],
             ),
-          )),
+            child: Center(
+                child: Text(
+              "I'm hungry",
+              style: TextStyle(
+                color: AppTheme.primaryColor,
+                fontFamily: 'Georgia',
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+          ),
         ),
       ),
     );
