@@ -23,6 +23,22 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Colors.black,
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(
+                Icons.exit_to_app,
+              ),
+              title: Text('Log out'),
+              onTap: () async {
+                Modular.to.popUntil((r) => r.isFirst);
+                await _controller.addEvent(AuthEvent.logout());
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: GestureDetector(
           onTap: () => OrderModule.toOrderScreen(),
