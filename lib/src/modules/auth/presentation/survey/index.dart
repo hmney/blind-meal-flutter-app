@@ -23,15 +23,18 @@ class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(30, 150, 30, 85),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                _title,
-                style: TextStyle(
-                  color: AppTheme.primaryColor,
-                  fontFamily: 'Roboto',
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  _title,
+                  style: TextStyle(
+                    color: AppTheme.primaryColor,
+                    fontFamily: 'Roboto',
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 20),
