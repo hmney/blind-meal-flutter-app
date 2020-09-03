@@ -38,6 +38,7 @@ class _TasteState extends State<Taste> {
                       child: Slider(
                         min: 1,
                         max: 5,
+                        divisions: 5,
                         value: controller.tasteDegree,
                         onChanged: controller.setTasteDegree,
                         activeColor: AppTheme.primaryColor,
@@ -64,6 +65,7 @@ class _TasteState extends State<Taste> {
           builder: (_) => Slider(
             min: 1,
             max: 5,
+            divisions: 5,
             value: controller.moodAndChoiceOfFood,
             onChanged: controller.setMoodAndChoiceOfFood,
             activeColor: AppTheme.primaryColor,
