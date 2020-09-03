@@ -55,6 +55,22 @@ mixin _$OrderController on _OrderController, Store {
     });
   }
 
+  final _$blindMealExperienceAtom =
+      Atom(name: '_OrderController.blindMealExperience');
+
+  @override
+  BLIND_MEAL_EXPERIENCE get blindMealExperience {
+    _$blindMealExperienceAtom.reportRead();
+    return super.blindMealExperience;
+  }
+
+  @override
+  set blindMealExperience(BLIND_MEAL_EXPERIENCE value) {
+    _$blindMealExperienceAtom.reportWrite(value, super.blindMealExperience, () {
+      super.blindMealExperience = value;
+    });
+  }
+
   final _$_OrderControllerActionController =
       ActionController(name: '_OrderController');
 
@@ -103,11 +119,23 @@ mixin _$OrderController on _OrderController, Store {
   }
 
   @override
+  void setBlindMealExperience(BLIND_MEAL_EXPERIENCE value) {
+    final _$actionInfo = _$_OrderControllerActionController.startAction(
+        name: '_OrderController.setBlindMealExperience');
+    try {
+      return super.setBlindMealExperience(value);
+    } finally {
+      _$_OrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 pageIndex: ${pageIndex},
 budget: ${budget},
-levelofHungriness: ${levelofHungriness}
+levelofHungriness: ${levelofHungriness},
+blindMealExperience: ${blindMealExperience}
     ''';
   }
 }

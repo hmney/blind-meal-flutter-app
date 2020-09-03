@@ -9,19 +9,19 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends MainModule {
   final authModule = AuthModule();
-  final orderModul = OrderModule();
+  final orderModule = OrderModule();
   final analytics = FirebaseAnalytics();
   @override
   List<Bind> get binds => [
         ...authModule.binds,
-        ...orderModul.binds,
+        ...orderModule.binds,
         Bind((i) => analytics),
       ];
 
   @override
   List<Router> get routers => [
         Router('', module: authModule),
-        Router('', module: orderModul),
+        Router('', module: orderModule),
       ];
 
   @override

@@ -38,6 +38,21 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
     }
   }
 
+  bool checkIfOrderQuestionAnswered(int index) {
+    switch (index) {
+      case 0:
+        return controller.feelingTextController.text.isNotEmpty;
+      case 1:
+        return true;
+      case 2:
+        return controller.budget > 0;
+      case 3:
+        return controller.blindMealExperience != BLIND_MEAL_EXPERIENCE.NONE;
+      default:
+        return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,18 +126,20 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                     Expanded(child: SizedBox(height: 20)),
                     SurveyButton(
                       onPressed: () async {
-                        // if (true) {
-                        //   BotToast.showText(
-                        //       text: 'Please selecte a choice');
-                        // } else {
-                        if (controller.pageIndex + 1 == orderQuestions.length) {
-                          BotToast.showLoading();
-                          BotToast.closeAllLoading();
-                        } else
-                          controller.pageController.nextPage(
-                              duration: Duration(milliseconds: 10),
-                              curve: Curves.easeIn);
-                        // }
+                        if (!checkIfOrderQuestionAnswered(index)) {
+                          BotToast.showText(text: 'Please selecte a choice');
+                        } else {
+                          if (controller.pageIndex + 1 ==
+                              orderQuestions.length) {
+                            BotToast.showLoading();
+                            controller.createNewOrderToFirebase();
+                            Modular.to.pop();
+                            BotToast.closeAllLoading();
+                          } else
+                            controller.pageController.nextPage(
+                                duration: Duration(milliseconds: 10),
+                                curve: Curves.easeIn);
+                        }
                       },
                       style: controller.pageIndex + 1 == orderQuestions.length
                           ? BUTTON_STYLE.DONE

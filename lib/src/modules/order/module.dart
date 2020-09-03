@@ -1,3 +1,5 @@
+import 'package:app/src/modules/order/data/repository/order_repository_implementation.dart';
+import 'package:app/src/modules/order/domain/repository/order_repository.dart';
 import 'package:app/src/modules/order/presentation/controller.dart';
 import 'package:app/src/modules/order/presentation/index.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -6,6 +8,7 @@ class OrderModule extends ChildModule {
   @override
   List<Bind> get binds => [
         Bind((i) => OrderController()),
+        Bind((i) => OrderRepositoryImplementation()),
       ];
 
   @override
