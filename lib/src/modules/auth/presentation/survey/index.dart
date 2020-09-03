@@ -13,9 +13,11 @@ class SurveyScreen extends StatefulWidget {
 }
 
 class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
-  final String _title = 'Hello.';
+  final String _title = 'Hooray!';
   final String _subtitle =
-      "Welcome to your unique food experience. Ordering food has never been easier, enjoy your time and live the dream. Before we go forward you need to reply to some questions, it will take from you just 5 minutes.";
+      "Welcome to our unique food experience.\n"
+      "Ordering food has never been easier.\n\n"
+      "Please take 1 minute to fill a survey and enjoy a lifetime struggle-free of food choice.";
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
@@ -43,8 +45,9 @@ class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Roboto',
-                  fontSize: 16,
-                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  wordSpacing: 1
                 ),
               ),
               Spacer(),
