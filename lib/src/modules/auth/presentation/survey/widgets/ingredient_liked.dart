@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class Ingredient extends StatefulWidget {
+class IngredientLiked extends StatefulWidget {
   final List<String> answers;
-  Ingredient({this.answers});
+  IngredientLiked({this.answers});
   @override
-  _IngredientState createState() => _IngredientState();
+  _IngredientLikedState createState() => _IngredientLikedState();
 }
 
-class _IngredientState extends State<Ingredient> {
+class _IngredientLikedState extends State<IngredientLiked> {
   List<String> get answers => widget.answers;
   final controller = Modular.get<SurveyController>();
   @override
@@ -23,7 +23,7 @@ class _IngredientState extends State<Ingredient> {
         (element) {
           return Observer(
             builder: (_) {
-              final _selected = controller.ingredient.contains(element);
+              final _selected = controller.ingredientLiked.contains(element);
               return ChoiceChip(
                 selectedColor: Colors.white,
                 backgroundColor: Color(0xff9a9a9a),
@@ -58,7 +58,7 @@ class _IngredientState extends State<Ingredient> {
                 ),
                 selected: _selected,
                 onSelected: (selected) {
-                  controller.selectIngredient(selected, element);
+                  controller.selectIngredientLiked(selected, element);
                 },
               );
             },

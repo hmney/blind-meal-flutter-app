@@ -33,7 +33,8 @@ abstract class _SurveyController with Store {
       'cuisineType',
       'dietType',
       'eatingHabits',
-      'ingredient',
+      'ingredientLiked',
+      'ingredientDisliked',
       'allergies',
       'taste',
       'budget',
@@ -98,18 +99,33 @@ abstract class _SurveyController with Store {
   }
 
   @observable
-  ObservableList<String> ingredient = ObservableList();
+  ObservableList<String> ingredientLiked = ObservableList();
 
   @action
-  void selectIngredient(bool selected, String value) {
+  void selectIngredientLiked(bool selected, String value) {
     if (selected)
-      ingredient.add(value);
+      ingredientLiked.add(value);
     else
-      ingredient.remove(value);
+      ingredientLiked.remove(value);
   }
 
-  bool checkIfIngredientIsSelected() {
-    return ingredient.length != 0;
+  bool checkIfIngredientLikedIsSelected() {
+    return ingredientLiked.length != 0;
+  }
+
+  @observable
+  ObservableList<String> ingredientDisliked = ObservableList();
+
+  @action
+  void selectIngredientDisliked(bool selected, String value) {
+    if (selected)
+      ingredientDisliked.add(value);
+    else
+      ingredientDisliked.remove(value);
+  }
+
+  bool checkIfIngredientDislikedIsSelected() {
+    return ingredientDisliked.length != 0;
   }
 
   @observable
@@ -173,12 +189,13 @@ abstract class _SurveyController with Store {
       cuisineType,
       dietType,
       eatingHabits,
-      ingredient,
+      ingredientLiked,
+      ingredientDisliked,
       allergies,
       taste,
       budget,
-      tasteDegree,
-      moodAndChoiceOfFood,
+      tasteDegree / 5,
+      moodAndChoiceOfFood / 5,
     );
     await userRepository.createNewSurveyToFirebase(currentUser.uid, survey);
   }

@@ -6,7 +6,8 @@ class Survey {
   List<String> cuisineType;
   List<String> dietType;
   List<String> eatingHabits;
-  List<String> ingredient;
+  List<String> ingredientLiked;
+  List<String> ingredientDisliked;
   List<String> allergies;
   List<String> taste;
   int budget;
@@ -18,7 +19,8 @@ class Survey {
     this.cuisineType,
     this.dietType,
     this.eatingHabits,
-    this.ingredient,
+    this.ingredientLiked,
+    this.ingredientDisliked,
     this.allergies,
     this.taste,
     this.budget,
@@ -31,7 +33,8 @@ class Survey {
     cuisineType = [];
     dietType = [];
     eatingHabits = [];
-    ingredient = [];
+    ingredientLiked = [];
+    ingredientDisliked = [];
     allergies = [];
     taste = [];
     budget = 0;
@@ -43,7 +46,8 @@ class Survey {
     List<String> cuisineType,
     List<String> dietType,
     String eatingHabits,
-    List<String> ingredient,
+    List<String> ingredientLiked,
+    List<String> ingredientDisliked,
     List<String> allergies,
     String taste,
     int budget,
@@ -54,7 +58,8 @@ class Survey {
         cuisineType: cuisineType,
         dietType: dietType,
         eatingHabits: [eatingHabits],
-        ingredient: ingredient,
+        ingredientLiked: ingredientLiked,
+        ingredientDisliked: ingredientDisliked,
         allergies: allergies,
         taste: [taste],
         budget: budget,
@@ -73,8 +78,10 @@ class Survey {
         return this.dietType;
       case 'eatingHabits':
         return this.eatingHabits;
-      case 'ingredient':
-        return this.ingredient;
+      case 'ingredientLiked':
+        return this.ingredientDisliked;
+      case 'ingredientDisliked':
+        return this.ingredientDisliked;
       case 'allergies':
         return this.allergies;
       case 'taste':
@@ -85,6 +92,6 @@ class Survey {
   }
 
   String toString() {
-    return "cuisineType: ${this.cuisineType.toString()}, dietType: ${this.dietType.toString()}, eatingHabits: ${this.eatingHabits.toString()}, ingredient: ${this.ingredient.toString()}, allergies: ${this.allergies.toString()}, taste: ${this.taste.toString()}, tasteDegree: ${tasteDegree.toString()}, moodAndChoiceOfFood: ${moodAndChoiceOfFood.toString()}, questions: ${this.questions.toString()}";
+    return "cuisineType: ${this.cuisineType.toString()}, dietType: ${this.dietType.toString()}, eatingHabits: ${this.eatingHabits.toString()}, ingredientLiked: ${this.ingredientLiked.toString()}, ingredientDisliked: ${this.ingredientDisliked.toString()}, allergies: ${this.allergies.toString()}, taste: ${this.taste.toString()}, tasteDegree: ${tasteDegree.toString()}, moodAndChoiceOfFood: ${moodAndChoiceOfFood.toString()}, questions: ${this.questions.toString()}";
   }
 }

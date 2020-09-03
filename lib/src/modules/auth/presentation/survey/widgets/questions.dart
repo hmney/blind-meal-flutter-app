@@ -7,7 +7,8 @@ import 'package:app/src/modules/auth/presentation/survey/widgets/budget.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/cuisine_type.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/diet_type.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/eating_habits.dart';
-import 'package:app/src/modules/auth/presentation/survey/widgets/ingredient.dart';
+import 'package:app/src/modules/auth/presentation/survey/widgets/ingredient_disliked.dart';
+import 'package:app/src/modules/auth/presentation/survey/widgets/ingredient_liked.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/taste.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,10 @@ class _QuestionsState extends State<Questions> {
         return DietType(answers: answers);
       case 'eatingHabits':
         return EatingHabits(answers: answers);
-      case 'ingredient':
-        return Ingredient(answers: answers);
+      case 'ingredientLiked':
+        return IngredientLiked(answers: answers);
+      case 'ingredientDisliked':
+        return IngredientDisliked(answers: answers);
       case 'allergies':
         return Allergies(answers: answers);
       case 'taste':
@@ -58,8 +61,10 @@ class _QuestionsState extends State<Questions> {
         return controller.checkIfDietTypeIsSelected();
       case 'eatingHabits':
         return controller.checkIfEatingHabitsIsSelected();
-      case 'ingredient':
-        return controller.checkIfIngredientIsSelected();
+      case 'ingredientLiked':
+        return controller.checkIfIngredientLikedIsSelected();
+      case 'ingredientDisliked':
+        return controller.checkIfIngredientDislikedIsSelected();
       case 'allergies':
         return controller.checkIfAllergiesIsSelected();
       case 'taste':
@@ -76,7 +81,7 @@ class _QuestionsState extends State<Questions> {
     return LayoutBuilder(
       builder: (context, constraint) => SingleChildScrollView(
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: constraint.maxHeight),
+          constraints: BoxConstraints(maxHeight: constraint.maxHeight),
           child: IntrinsicHeight(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
@@ -134,7 +139,7 @@ class _QuestionsState extends State<Questions> {
                         ]),
                   ),
                   createBodyofQuestion(questionType, answers),
-                  Expanded(child: SizedBox(height: 20)),
+                  // Expanded(child: SizedBox(height: 20)),
                   SurveyButton(
                     onPressed: () async {
                       if (!checkIfQuestionAnswered(questionType)) {

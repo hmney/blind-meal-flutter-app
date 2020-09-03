@@ -78,18 +78,34 @@ mixin _$SurveyController on _SurveyController, Store {
     });
   }
 
-  final _$ingredientAtom = Atom(name: '_SurveyController.ingredient');
+  final _$ingredientLikedAtom = Atom(name: '_SurveyController.ingredientLiked');
 
   @override
-  ObservableList<String> get ingredient {
-    _$ingredientAtom.reportRead();
-    return super.ingredient;
+  ObservableList<String> get ingredientLiked {
+    _$ingredientLikedAtom.reportRead();
+    return super.ingredientLiked;
   }
 
   @override
-  set ingredient(ObservableList<String> value) {
-    _$ingredientAtom.reportWrite(value, super.ingredient, () {
-      super.ingredient = value;
+  set ingredientLiked(ObservableList<String> value) {
+    _$ingredientLikedAtom.reportWrite(value, super.ingredientLiked, () {
+      super.ingredientLiked = value;
+    });
+  }
+
+  final _$ingredientDislikedAtom =
+      Atom(name: '_SurveyController.ingredientDisliked');
+
+  @override
+  ObservableList<String> get ingredientDisliked {
+    _$ingredientDislikedAtom.reportRead();
+    return super.ingredientDisliked;
+  }
+
+  @override
+  set ingredientDisliked(ObservableList<String> value) {
+    _$ingredientDislikedAtom.reportWrite(value, super.ingredientDisliked, () {
+      super.ingredientDisliked = value;
     });
   }
 
@@ -232,11 +248,22 @@ mixin _$SurveyController on _SurveyController, Store {
   }
 
   @override
-  void selectIngredient(bool selected, String value) {
+  void selectIngredientLiked(bool selected, String value) {
     final _$actionInfo = _$_SurveyControllerActionController.startAction(
-        name: '_SurveyController.selectIngredient');
+        name: '_SurveyController.selectIngredientLiked');
     try {
-      return super.selectIngredient(selected, value);
+      return super.selectIngredientLiked(selected, value);
+    } finally {
+      _$_SurveyControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void selectIngredientDisliked(bool selected, String value) {
+    final _$actionInfo = _$_SurveyControllerActionController.startAction(
+        name: '_SurveyController.selectIngredientDisliked');
+    try {
+      return super.selectIngredientDisliked(selected, value);
     } finally {
       _$_SurveyControllerActionController.endAction(_$actionInfo);
     }
@@ -326,7 +353,8 @@ pageIndex: ${pageIndex},
 cuisineType: ${cuisineType},
 dietType: ${dietType},
 eatingHabits: ${eatingHabits},
-ingredient: ${ingredient},
+ingredientLiked: ${ingredientLiked},
+ingredientDisliked: ${ingredientDisliked},
 checkAllergy: ${checkAllergy},
 allergies: ${allergies},
 taste: ${taste},
