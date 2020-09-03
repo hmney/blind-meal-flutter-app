@@ -50,7 +50,7 @@ class _TypeofBlindMealExperienceState extends State<TypeofBlindMealExperience> {
                   SvgPicture.asset('assets/icons/completely_blind.svg'),
                   SizedBox(height: 10),
                   Text(
-                    'completely blind',
+                    'Blind meal',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class _TypeofBlindMealExperienceState extends State<TypeofBlindMealExperience> {
                   SvgPicture.asset('assets/icons/get_suggestions.svg'),
                   SizedBox(height: 10),
                   Text(
-                    'get suggestions',
+                    'Suggestions',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
