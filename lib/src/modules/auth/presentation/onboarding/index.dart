@@ -22,9 +22,9 @@ class _OnboardingScreensState
           IntroductionScreen(
             pages: [
               PageViewModel(
-                title: 'Waste time',
+                title: 'Avoid wasting your time',
                 body:
-                    'Do you spend time every day thinking about what to eat and end up ordering the same thing?',
+                    'Do you always misspend your time thinking about what to eat and you end up ordering the same thing?',
                 image: Center(
                   child: SvgPicture.asset(
                     'assets/onboarding/onboarding_1.svg',
@@ -37,7 +37,7 @@ class _OnboardingScreensState
               PageViewModel(
                 title: 'New meals according to your mood',
                 body:
-                    ' Are you afraid from trying new meals?  Want to eat according to your mood and bring it to you?',
+                    'Are you afraid of trying new meals? Do you want to eat the best meal each time?',
                 image: Center(
                   child: SvgPicture.asset(
                     'assets/onboarding/onboarding_2.svg',
@@ -50,7 +50,7 @@ class _OnboardingScreensState
               PageViewModel(
                 title: 'Our Solution',
                 body:
-                    'We are helping you skip the whole long process of getting food and get directly your favorite meal.',
+                    'We will save you the hassle of food choice and deliver to you what will perfectly suit your hunger.',
                 image: Center(
                   child: SvgPicture.asset(
                     'assets/onboarding/onboarding_3.svg',
@@ -63,7 +63,7 @@ class _OnboardingScreensState
               PageViewModel(
                 title: 'What we need from you',
                 body:
-                    'All what you have to do is fill information once, give us an overview about your taste and our incredible intelligent machine will bring you what you want to eat.',
+                    'We will save you the hassle of food choice and deliver to you what will perfectly suit your hunger.',
                 image: Center(
                   child: SvgPicture.asset(
                     'assets/onboarding/onboarding_4.svg',

@@ -53,7 +53,7 @@ class _TasteState extends State<Taste> {
         SizedBox(height: 40),
         Container(
           child: Text(
-            'How much your mood affect your choice of food ?',
+            'How much your mood can affect your food choice ?',
             style: TextStyle(
               fontSize: 16,
               color: AppTheme.primaryColor,
