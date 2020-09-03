@@ -81,7 +81,7 @@ class _QuestionsState extends State<Questions> {
     return LayoutBuilder(
       builder: (context, constraint) => SingleChildScrollView(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: constraint.maxHeight),
+          constraints: BoxConstraints(minHeight: constraint.maxHeight),
           child: IntrinsicHeight(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
@@ -139,7 +139,7 @@ class _QuestionsState extends State<Questions> {
                         ]),
                   ),
                   createBodyofQuestion(questionType, answers),
-                  // Expanded(child: SizedBox(height: 20)),
+                  Expanded(child: SizedBox(height: 20)),
                   SurveyButton(
                     onPressed: () async {
                       if (!checkIfQuestionAnswered(questionType)) {
