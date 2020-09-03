@@ -17,7 +17,7 @@ class _DietTypeState extends State<DietType> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 320,
+      height: 400,
       child: GridView.count(
         crossAxisCount: 2,
         mainAxisSpacing: 55,
