@@ -15,10 +15,10 @@ class SignupScreen extends StatefulWidget {
   _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends ModularState<SignupScreen, AuthController> {
+class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final _scrollController = ScrollController();
-
+  final controller = Modular.get<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,86 +27,91 @@ class _SignupScreenState extends ModularState<SignupScreen, AuthController> {
       resizeToAvoidBottomPadding: false,
       backgroundColor: AppTheme.backgroundColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          reverse: true,
-          child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: const Text(
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            reverse: true,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: const Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Roboto',
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Modular.to.pop(),
+                            child: Container(
+                              child: SvgPicture.asset(
+                                'assets/icons/cancel.svg',
+                                width: 18,
+                                height: 18,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 30),
+                      NameField(controller: controller),
+                      SizedBox(height: 20),
+                      BirthdateField(controller: controller),
+                      SizedBox(height: 20),
+                      PhoneFormWidget(controller: controller),
+                      SizedBox(height: 20),
+                      EmailField(controller: controller),
+                      SizedBox(height: 20),
+                      PasswordField(controller: controller),
+                      SizedBox(height: 20),
+                      CountryField(controller: controller),
+                      SizedBox(height: 30),
+                      Container(
+                        width: 300,
+                        height: 50,
+                        child: RaisedButton(
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              await controller
+                                  .authentication(AUTHENTICATION.SIGN_UP);
+                            }
+                          },
+                          color: AppTheme.primaryColor,
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Text(
                             'Sign Up',
                             style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Roboto',
-                              fontSize: 32,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
                             ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () => Modular.to.pop(),
-                          child: Container(
-                            child: SvgPicture.asset(
-                              'assets/icons/cancel.svg',
-                              width: 18,
-                              height: 18,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    NameField(controller: controller),
-                    SizedBox(height: 20),
-                    BirthdateField(controller: controller),
-                    SizedBox(height: 20),
-                    PhoneFormWidget(controller: controller),
-                    SizedBox(height: 20),
-                    EmailField(controller: controller),
-                    SizedBox(height: 20),
-                    PasswordField(controller: controller),
-                    SizedBox(height: 20),
-                    CountryField(controller: controller),
-                    SizedBox(height: 30),
-                    Container(
-                      width: 300,
-                      height: 50,
-                      child: RaisedButton(
-                        onPressed: () async {
-                          if (_formKey.currentState.validate()) {
-                            _formKey.currentState.save();
-                            await controller
-                                .authentication(AUTHENTICATION.SIGN_UP);
-                          }
-                        },
-                        color: AppTheme.primaryColor,
-                        textColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Roboto',
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 20)
-                  ],
+                      SizedBox(height: 20)
+                    ],
+                  ),
                 ),
               ),
             ),
