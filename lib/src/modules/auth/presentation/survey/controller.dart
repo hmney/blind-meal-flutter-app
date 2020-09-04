@@ -174,15 +174,6 @@ abstract class _SurveyController with Store {
   @action
   void setMoodAndChoiceOfFood(double value) => moodAndChoiceOfFood = value;
 
-  @observable
-  int budget = 0;
-
-  @action
-  void incBudget() => budget++;
-
-  @action
-  void decBudget() => (budget > 0) ? budget-- : budget;
-
   void createNewSurveyToFirebase() async {
     var currentUser = await authRepository.getCurrentUser();
     var survey = Survey.createNewSurvey(
@@ -193,7 +184,6 @@ abstract class _SurveyController with Store {
       ingredientDisliked,
       allergies,
       taste,
-      budget,
       tasteDegree / 5,
       moodAndChoiceOfFood / 5,
     );

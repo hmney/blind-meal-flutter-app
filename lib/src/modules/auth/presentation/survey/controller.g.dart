@@ -185,21 +185,6 @@ mixin _$SurveyController on _SurveyController, Store {
     });
   }
 
-  final _$budgetAtom = Atom(name: '_SurveyController.budget');
-
-  @override
-  int get budget {
-    _$budgetAtom.reportRead();
-    return super.budget;
-  }
-
-  @override
-  set budget(int value) {
-    _$budgetAtom.reportWrite(value, super.budget, () {
-      super.budget = value;
-    });
-  }
-
   final _$_SurveyControllerActionController =
       ActionController(name: '_SurveyController');
 
@@ -325,28 +310,6 @@ mixin _$SurveyController on _SurveyController, Store {
   }
 
   @override
-  void incBudget() {
-    final _$actionInfo = _$_SurveyControllerActionController.startAction(
-        name: '_SurveyController.incBudget');
-    try {
-      return super.incBudget();
-    } finally {
-      _$_SurveyControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void decBudget() {
-    final _$actionInfo = _$_SurveyControllerActionController.startAction(
-        name: '_SurveyController.decBudget');
-    try {
-      return super.decBudget();
-    } finally {
-      _$_SurveyControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 pageIndex: ${pageIndex},
@@ -360,7 +323,6 @@ allergies: ${allergies},
 taste: ${taste},
 tasteDegree: ${tasteDegree},
 moodAndChoiceOfFood: ${moodAndChoiceOfFood},
-budget: ${budget},
 selectionAllergiesVisiblity: ${selectionAllergiesVisiblity}
     ''';
   }

@@ -3,7 +3,6 @@ import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/allergies.dart';
-import 'package:app/src/modules/auth/presentation/survey/widgets/budget.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/cuisine_type.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/diet_type.dart';
 import 'package:app/src/modules/auth/presentation/survey/widgets/eating_habits.dart';
@@ -46,8 +45,7 @@ class _QuestionsState extends State<Questions> {
         return Allergies(answers: answers);
       case 'taste':
         return Taste(answers: answers);
-      case 'budget':
-        return Budget(answers: answers);
+
       default:
         return SizedBox();
     }
@@ -68,8 +66,6 @@ class _QuestionsState extends State<Questions> {
       case 'allergies':
         return controller.checkIfAllergiesIsSelected();
       case 'taste':
-        return true;
-      case 'budget':
         return true;
       default:
         return false;

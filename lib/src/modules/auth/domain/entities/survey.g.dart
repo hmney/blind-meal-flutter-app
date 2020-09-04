@@ -19,7 +19,6 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) {
         (json['ingredientDisliked'] as List)?.map((e) => e as String)?.toList(),
     allergies: (json['allergies'] as List)?.map((e) => e as String)?.toList(),
     taste: (json['taste'] as List)?.map((e) => e as String)?.toList(),
-    budget: json['budget'] as int,
     tasteDegree: (json['tasteDegree'] as num)?.toDouble(),
     moodAndChoiceOfFood: (json['moodAndChoiceOfFood'] as num)?.toDouble(),
     questions: (json['questions'] as Map<String, dynamic>)?.map(
@@ -36,7 +35,6 @@ Map<String, dynamic> _$SurveyToJson(Survey instance) => <String, dynamic>{
       'ingredientDisliked': instance.ingredientDisliked,
       'allergies': instance.allergies,
       'taste': instance.taste,
-      'budget': instance.budget,
       'tasteDegree': instance.tasteDegree,
       'moodAndChoiceOfFood': instance.moodAndChoiceOfFood,
       'questions': instance.questions,

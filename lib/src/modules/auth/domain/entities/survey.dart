@@ -10,7 +10,6 @@ class Survey {
   List<String> ingredientDisliked;
   List<String> allergies;
   List<String> taste;
-  int budget;
   double tasteDegree;
   double moodAndChoiceOfFood;
   Map<String, String> questions;
@@ -23,7 +22,6 @@ class Survey {
     this.ingredientDisliked,
     this.allergies,
     this.taste,
-    this.budget,
     this.tasteDegree,
     this.moodAndChoiceOfFood,
     this.questions,
@@ -37,7 +35,6 @@ class Survey {
     ingredientDisliked = [];
     allergies = [];
     taste = [];
-    budget = 0;
     tasteDegree = 0;
     moodAndChoiceOfFood = 0;
   }
@@ -50,7 +47,6 @@ class Survey {
     List<String> ingredientDisliked,
     List<String> allergies,
     String taste,
-    int budget,
     double tasteDegree,
     double moodAndChoiceOfFood,
   ) =>
@@ -62,7 +58,6 @@ class Survey {
         ingredientDisliked: ingredientDisliked,
         allergies: allergies,
         taste: [taste],
-        budget: budget,
         tasteDegree: tasteDegree,
         moodAndChoiceOfFood: moodAndChoiceOfFood,
       );
