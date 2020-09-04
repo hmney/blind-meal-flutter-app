@@ -71,6 +71,21 @@ mixin _$OrderController on _OrderController, Store {
     });
   }
 
+  final _$mealSelectedAtom = Atom(name: '_OrderController.mealSelected');
+
+  @override
+  String get mealSelected {
+    _$mealSelectedAtom.reportRead();
+    return super.mealSelected;
+  }
+
+  @override
+  set mealSelected(String value) {
+    _$mealSelectedAtom.reportWrite(value, super.mealSelected, () {
+      super.mealSelected = value;
+    });
+  }
+
   final _$_OrderControllerActionController =
       ActionController(name: '_OrderController');
 
@@ -130,12 +145,24 @@ mixin _$OrderController on _OrderController, Store {
   }
 
   @override
+  void setMealSelected(String value) {
+    final _$actionInfo = _$_OrderControllerActionController.startAction(
+        name: '_OrderController.setMealSelected');
+    try {
+      return super.setMealSelected(value);
+    } finally {
+      _$_OrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 pageIndex: ${pageIndex},
 budget: ${budget},
 levelofHungriness: ${levelofHungriness},
-blindMealExperience: ${blindMealExperience}
+blindMealExperience: ${blindMealExperience},
+mealSelected: ${mealSelected}
     ''';
   }
 }

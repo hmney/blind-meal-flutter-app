@@ -58,6 +58,12 @@ abstract class _OrderController with Store {
     );
     await orderRepository.createNewOrder(order);
   }
+
+  @observable
+  String mealSelected;
+
+  @action
+  void setMealSelected(String value) => mealSelected = value;
 }
 
 enum BLIND_MEAL_EXPERIENCE {
