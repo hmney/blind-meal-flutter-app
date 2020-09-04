@@ -30,7 +30,7 @@ class _CuisineTypeState extends State<CuisineType> {
                 border: Border(
                   left: (controller.cuisineType.contains(element))
                       ? BorderSide(color: AppTheme.primaryColor, width: 5)
-                      : BorderSide.none,
+                      : BorderSide(color: Colors.white, width: 5),
                 ),
                 boxShadow: [
                   BoxShadow(
