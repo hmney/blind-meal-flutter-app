@@ -17,7 +17,7 @@ class _DietTypeState extends State<DietType> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: MediaQuery.of(context).size.height * 0.5,
       child: GridView.count(
         crossAxisCount: 2,
         mainAxisSpacing: 55,
