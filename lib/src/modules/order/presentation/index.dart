@@ -69,116 +69,122 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
-      body: SafeArea(
-        child: PageView.custom(
-          controller: controller.pageController,
-          onPageChanged: controller.onChangePageIndex,
-          physics: NeverScrollableScrollPhysics(),
-          childrenDelegate: SliverChildBuilderDelegate(
-            (context, index) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: LinearPercentIndicator(
-                        padding: EdgeInsets.zero,
-                        lineHeight: 4.0,
-                        percent:
-                            (controller.pageIndex + 1) / orderQuestions.length,
-                        backgroundColor: Colors.white,
-                        progressColor: AppTheme.primaryColor,
-                      ),
-                    ),
-                    SizedBox(height: 30),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: GestureDetector(
-                        onTap: () {
-                          if (controller.pageIndex > 0) {
-                            if (controller.pageIndex == 5 &&
-                                controller.blindMealExperience ==
-                                    BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
-                              controller.pageController.animateToPage(3,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.easeIn);
-                            } else {
-                              controller.pageController.previousPage(
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.easeIn);
-                            }
-                          } else
-                            Modular.to.pop();
-                        },
-                        child: Icon(Icons.arrow_back),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              orderQuestions[index],
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Georgia',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 26,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Container(
-                              width: 30,
-                              child: Divider(
-                                thickness: 4,
-                                color: AppTheme.primaryColor,
-                              ),
-                            ),
-                          ],
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: SafeArea(
+          child: PageView.custom(
+            controller: controller.pageController,
+            onPageChanged: controller.onChangePageIndex,
+            physics: NeverScrollableScrollPhysics(),
+            childrenDelegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        child: LinearPercentIndicator(
+                          padding: EdgeInsets.zero,
+                          lineHeight: 4.0,
+                          percent: (controller.pageIndex + 1) /
+                              orderQuestions.length,
+                          backgroundColor: Colors.white,
+                          progressColor: AppTheme.primaryColor,
                         ),
                       ),
-                    ),
-                    createBodyofOrderQuestion(index),
-                    Expanded(child: SizedBox(height: 20)),
-                    SurveyButton(
-                      onPressed: () async {
-                        if (!checkIfOrderQuestionAnswered(index)) {
-                          BotToast.showText(text: 'Please selecte a choice');
-                        } else {
-                          if (controller.pageIndex + 1 ==
-                              orderQuestions.length) {
-                            BotToast.showLoading();
-                            controller.createNewOrderToFirebase();
-                            Modular.to.pop();
-                            BotToast.closeAllLoading();
+                      SizedBox(height: 30),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: GestureDetector(
+                          onTap: () {
+                            if (controller.pageIndex > 0) {
+                              if (controller.pageIndex == 5 &&
+                                  controller.blindMealExperience ==
+                                      BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
+                                controller.pageController.animateToPage(3,
+                                    duration: Duration(milliseconds: 10),
+                                    curve: Curves.easeIn);
+                              } else {
+                                controller.pageController.previousPage(
+                                    duration: Duration(milliseconds: 10),
+                                    curve: Curves.easeIn);
+                              }
+                            } else
+                              Modular.to.pop();
+                          },
+                          child: Icon(Icons.arrow_back),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 30.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                orderQuestions[index],
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Georgia',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Container(
+                                width: 30,
+                                child: Divider(
+                                  thickness: 4,
+                                  color: AppTheme.primaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      createBodyofOrderQuestion(index),
+                      Expanded(child: SizedBox(height: 20)),
+                      SurveyButton(
+                        onPressed: () async {
+                          FocusScope.of(context).unfocus();
+                          if (!checkIfOrderQuestionAnswered(index)) {
+                            BotToast.showText(text: 'Please selecte a choice');
                           } else {
-                            if (controller.pageIndex == 3 &&
-                                controller.blindMealExperience ==
-                                    BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
-                              controller.pageController.animateToPage(5,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.easeIn);
+                            if (controller.pageIndex + 1 ==
+                                orderQuestions.length) {
+                              BotToast.showLoading();
+                              controller.createNewOrderToFirebase();
+                              Modular.to.pop();
+                              BotToast.closeAllLoading();
                             } else {
-                              controller.pageController.nextPage(
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.easeIn);
+                              if (controller.pageIndex == 3 &&
+                                  controller.blindMealExperience ==
+                                      BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
+                                controller.pageController.animateToPage(5,
+                                    duration: Duration(milliseconds: 10),
+                                    curve: Curves.easeIn);
+                              } else {
+                                controller.pageController.nextPage(
+                                    duration: Duration(milliseconds: 10),
+                                    curve: Curves.easeIn);
+                              }
                             }
                           }
-                        }
-                      },
-                      style: controller.pageIndex + 1 == orderQuestions.length
-                          ? BUTTON_STYLE.DONE
-                          : BUTTON_STYLE.CONTINUE,
-                    ),
-                  ],
-                ),
-              );
-            },
-            childCount: orderQuestions.length,
+                        },
+                        style: controller.pageIndex + 1 == orderQuestions.length
+                            ? BUTTON_STYLE.DONE
+                            : BUTTON_STYLE.CONTINUE,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              childCount: orderQuestions.length,
+            ),
           ),
         ),
       ),

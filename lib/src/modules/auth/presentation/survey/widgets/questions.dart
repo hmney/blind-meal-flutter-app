@@ -100,6 +100,7 @@ class _QuestionsState extends State<Questions> {
                     alignment: Alignment.centerLeft,
                     child: GestureDetector(
                       onTap: () {
+                        FocusScope.of(context).unfocus();
                         if (controller.pageIndex > 0)
                           controller.pageController.previousPage(
                               duration: Duration(milliseconds: 10),
@@ -138,6 +139,7 @@ class _QuestionsState extends State<Questions> {
                   Expanded(child: SizedBox(height: 20)),
                   SurveyButton(
                     onPressed: () async {
+                      FocusScope.of(context).unfocus();
                       if (!checkIfQuestionAnswered(questionType)) {
                         BotToast.showText(text: 'Please selecte a choice');
                       } else {

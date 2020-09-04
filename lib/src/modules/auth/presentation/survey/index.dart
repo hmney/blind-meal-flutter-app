@@ -14,8 +14,7 @@ class SurveyScreen extends StatefulWidget {
 
 class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
   final String _title = 'Hooray!';
-  final String _subtitle =
-      "Welcome to our unique food experience.\n"
+  final String _subtitle = "Welcome to our unique food experience.\n"
       "Ordering food has never been easier.\n\n"
       "Please take 1 minute to fill a survey and enjoy a lifetime struggle-free of food choice.";
   Widget build(BuildContext context) {
@@ -43,12 +42,11 @@ class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
               Text(
                 _subtitle,
                 style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Roboto',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  wordSpacing: 1
-                ),
+                    color: Colors.black,
+                    fontFamily: 'Roboto',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    wordSpacing: 1),
               ),
               Spacer(),
               SurveyButton(
@@ -85,23 +83,28 @@ class _StartSurveyState extends State<StartSurvey> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
-      body: SafeArea(
-        child: PageView.custom(
-          controller: _controller.pageController,
-          onPageChanged: _controller.onChangePageIndex,
-          physics: NeverScrollableScrollPhysics(),
-          childrenDelegate: SliverChildBuilderDelegate(
-            (context, index) {
-              final key =
-                  _controller.surveyQuestions.questions.keys.elementAt(index);
-              final value = _controller.surveyQuestions.questions[key];
-              return Questions(
-                questionType: key,
-                question: value,
-                answers: _controller.surveyQuestions.getAnswers(key),
-              );
-            },
-            childCount: _controller.maxPageIndex,
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: SafeArea(
+          child: PageView.custom(
+            controller: _controller.pageController,
+            onPageChanged: _controller.onChangePageIndex,
+            physics: NeverScrollableScrollPhysics(),
+            childrenDelegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final key =
+                    _controller.surveyQuestions.questions.keys.elementAt(index);
+                final value = _controller.surveyQuestions.questions[key];
+                return Questions(
+                  questionType: key,
+                  question: value,
+                  answers: _controller.surveyQuestions.getAnswers(key),
+                );
+              },
+              childCount: _controller.maxPageIndex,
+            ),
           ),
         ),
       ),
