@@ -147,7 +147,7 @@ class _QuestionsState extends State<Questions> {
                             controller.maxPageIndex) {
                           BotToast.showLoading();
                           controller.createNewSurveyToFirebase();
-                          Modular.to.pop();
+                          Modular.to.popUntil((r) => r.isFirst);
                           await Modular.get<AuthController>()
                               .addEvent(AuthEvent.goHome());
                           BotToast.closeAllLoading();

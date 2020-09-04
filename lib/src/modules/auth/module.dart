@@ -28,6 +28,7 @@ class AuthModule extends ChildModule {
         Router(SIGNUP_SCREEN, child: (_, args) => SignupScreen()),
         Router<Country>(COUNTRY_PICKER, child: (_, args) => CountryPicker()),
         Router(START_SURVEY, child: (_, args) => StartSurvey()),
+        Router(SURVEY_SCREEN, child: (_, args) => SurveyScreen()),
       ];
 
   static const LOGIN_SCREEN = '/login';
@@ -42,4 +43,7 @@ class AuthModule extends ChildModule {
 
   static const START_SURVEY = '/start_survey';
   static Future toStartSurvey() => Modular.to.pushNamed(START_SURVEY);
+
+  static const SURVEY_SCREEN = '/survey';
+  static Future toSurveyScreen() => Modular.to.pushNamed(SURVEY_SCREEN);
 }

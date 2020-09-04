@@ -58,6 +58,7 @@ class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
               SizedBox(height: 10),
               SurveyButton(
                 onPressed: () async {
+                  if (Modular.to.canPop()) Modular.to.pop();
                   await Modular.get<AuthController>()
                       .addEvent(AuthEvent.goHome());
                 },
