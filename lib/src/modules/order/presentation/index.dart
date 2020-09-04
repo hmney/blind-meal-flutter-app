@@ -96,11 +96,19 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(
                         onTap: () {
-                          if (controller.pageIndex > 0)
-                            controller.pageController.previousPage(
-                                duration: Duration(milliseconds: 10),
-                                curve: Curves.easeIn);
-                          else
+                          if (controller.pageIndex > 0) {
+                            if (controller.pageIndex == 5 &&
+                                controller.blindMealExperience ==
+                                    BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
+                              controller.pageController.animateToPage(3,
+                                  duration: Duration(milliseconds: 10),
+                                  curve: Curves.easeIn);
+                            } else {
+                              controller.pageController.previousPage(
+                                  duration: Duration(milliseconds: 10),
+                                  curve: Curves.easeIn);
+                            }
+                          } else
                             Modular.to.pop();
                         },
                         child: Icon(Icons.arrow_back),
@@ -147,10 +155,19 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                             controller.createNewOrderToFirebase();
                             Modular.to.pop();
                             BotToast.closeAllLoading();
-                          } else
-                            controller.pageController.nextPage(
-                                duration: Duration(milliseconds: 10),
-                                curve: Curves.easeIn);
+                          } else {
+                            if (controller.pageIndex == 3 &&
+                                controller.blindMealExperience ==
+                                    BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
+                              controller.pageController.animateToPage(5,
+                                  duration: Duration(milliseconds: 10),
+                                  curve: Curves.easeIn);
+                            } else {
+                              controller.pageController.nextPage(
+                                  duration: Duration(milliseconds: 10),
+                                  curve: Curves.easeIn);
+                            }
+                          }
                         }
                       },
                       style: controller.pageIndex + 1 == orderQuestions.length
