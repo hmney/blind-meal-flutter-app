@@ -21,15 +21,11 @@ class AuthModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute, child: (_, args) => AuthScreen()),
-        Router(LOGIN_SCREEN, child: (_, args) => LoginScreen()),
         Router(SIGNUP_SCREEN, child: (_, args) => SignupScreen()),
         Router<Country>(COUNTRY_PICKER, child: (_, args) => CountryPicker()),
         Router(START_SURVEY, child: (_, args) => StartSurvey()),
         Router(SURVEY_SCREEN, child: (_, args) => SurveyScreen()),
       ];
-
-  static const LOGIN_SCREEN = '/login';
-  static Future toLoginScreen() => Modular.to.pushNamed(LOGIN_SCREEN);
 
   static const SIGNUP_SCREEN = '/signup';
   static Future toSignupScreen() => Modular.to.pushNamed(SIGNUP_SCREEN);
