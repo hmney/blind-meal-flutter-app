@@ -1,4 +1,3 @@
-import 'package:app/src/modules/app/presentation/home.dart';
 import 'package:app/src/modules/auth/data/repository/auth_repository_implementation.dart';
 import 'package:app/src/modules/auth/data/repository/user_repository_implementation.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
@@ -6,7 +5,6 @@ import 'package:app/src/modules/auth/presentation/index.dart';
 import 'package:app/src/modules/auth/presentation/login/index.dart';
 import 'package:app/src/modules/auth/presentation/signup/country_picker/index.dart';
 import 'package:app/src/modules/auth/presentation/signup/index.dart';
-import 'package:app/src/modules/auth/presentation/onboarding/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/index.dart';
 import 'package:country_provider/country_provider.dart';
@@ -18,7 +16,6 @@ class AuthModule extends ChildModule {
         Bind((i) => AuthRepositoryImplementation()),
         Bind((i) => UserRepositoryImplementation()),
         Bind((i) => AuthController()),
-        Bind((i) => OnboardingController()),
         Bind((i) => SurveyController()),
       ];
   @override

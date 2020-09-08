@@ -1,7 +1,5 @@
 import 'package:app/src/core/styles.dart';
-import 'package:app/src/modules/auth/module.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
-import 'package:app/src/modules/auth/presentation/onboarding/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -12,8 +10,7 @@ class OnboardingScreens extends StatefulWidget {
   _OnboardingScreensState createState() => _OnboardingScreensState();
 }
 
-class _OnboardingScreensState
-    extends ModularState<OnboardingScreens, OnboardingController> {
+class _OnboardingScreensState extends State<OnboardingScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +72,8 @@ class _OnboardingScreensState
                   width: 200,
                   height: 50,
                   child: RaisedButton(
-                    onPressed: () => AuthModule.toLoginScreen(),
+                    onPressed: () => Modular.get<AuthController>().authState =
+                        AuthState.loggedOut(),
                     color: AppTheme.primaryColor,
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
