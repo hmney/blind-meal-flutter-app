@@ -2,6 +2,7 @@ import 'package:app/src/modules/app/presentation/home.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/login/index.dart';
 import 'package:app/src/modules/auth/presentation/onboarding/index.dart';
+import 'package:app/src/modules/auth/presentation/splash/index.dart';
 import 'package:app/src/modules/auth/presentation/survey/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -23,7 +24,7 @@ class _AuthScreenState extends ModularState<AuthScreen, AuthController> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => controller.authState.when<Widget>(
-        initial: () => Container(),
+        initial: () => SplashScreen(),
         authenticated: () => HomeScreen(),
         unauthenticated: () => OnboardingScreens(),
         surveyNotFilled: () => SurveyScreen(),
