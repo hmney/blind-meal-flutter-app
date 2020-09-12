@@ -75,7 +75,7 @@ class _PhoneFormWidgetState extends State<PhoneFormWidget> {
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.asset(
                                       'icons/flags/png/${_controller.countryPhone.alpha2Code.toLowerCase()}.png',
-                                      fit: BoxFit.cover,
+                                      fit: BoxFit.fill,
                                       package: 'country_icons'),
                                 ),
                               ),
