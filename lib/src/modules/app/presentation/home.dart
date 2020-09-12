@@ -85,8 +85,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-// onPressed: () async {
-//   Modular.to.popUntil((r) => r.isFirst);
-//   await _controller.addEvent(AuthEvent.logout());
-// },
