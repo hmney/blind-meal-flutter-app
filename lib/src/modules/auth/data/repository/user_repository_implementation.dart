@@ -40,6 +40,7 @@ class UserRepositoryImplementation extends UserRepository {
     return doc.exists && doc.data.isNotEmpty ? User.fromJson(doc.data) : null;
   }
 
+  // This function responsible to set survey data to firestore
   @override
   Future<void> createNewSurveyToFirebase(String userId, Survey survey) async {
     await _userCollection.document(userId).updateData({'isSurveyFilled': true});
