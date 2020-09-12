@@ -56,7 +56,7 @@ class _BudgetofMealState extends State<BudgetofMeal> {
           child: Center(
             child: Observer(
               builder: (_) => Text(
-                '${controller.budget} \$',
+                '${controller.budget} AED',
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
             ),
