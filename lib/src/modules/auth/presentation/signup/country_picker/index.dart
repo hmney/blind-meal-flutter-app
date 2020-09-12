@@ -84,7 +84,7 @@ class _CountryPickerState
                                               BorderRadius.circular(20),
                                           child: Image.asset(
                                             'icons/flags/png/${country.alpha2Code.toLowerCase()}.png',
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fill,
                                             package: 'country_icons',
                                           ),
                                         ),
