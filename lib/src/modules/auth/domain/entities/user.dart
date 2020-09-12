@@ -38,11 +38,11 @@ class User extends _User with _$User {
     String id,
     String firstName,
     String lastName,
+    String profilePicture,
     String phone,
     String email,
     String country,
     DateTime birthdate,
-    bool isSurveyFilled = false,
   }) {
     return User(
       id: id,
@@ -53,7 +53,7 @@ class User extends _User with _$User {
       accountCreationTime: DateTime.now().toUtc(),
       country: country,
       birthdate: birthdate,
-      isSurveyFilled: isSurveyFilled,
+      isSurveyFilled: false,
     );
   }
 
@@ -66,7 +66,17 @@ class User extends _User with _$User {
   static DateTime _timeToJson(DateTime time) => time;
 
   String toString() {
-    return "id: ${this.id}, firstName: ${this.firstName}, lastName: ${this.lastName}, username: ${this.username}, phone: ${this.phone}, email: ${this.email}, country: ${this.country}, profilePicture: ${this.profilePicture}, isSurveyFilled: ${this.isSurveyFilled}";
+    return '''
+    id: ${this.id},
+    firstName: ${this.firstName},
+    lastName: ${this.lastName},
+    username: ${this.username},
+    phone: ${this.phone},
+    email: ${this.email},
+    country: ${this.country}, 
+    profilePicture: ${this.profilePicture},
+    isSurveyFilled: ${this.isSurveyFilled}
+    ''';
   }
 }
 
