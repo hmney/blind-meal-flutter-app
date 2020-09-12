@@ -1,8 +1,11 @@
 import 'package:app/src/modules/auth/domain/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepositoryImplementation implements AuthRepository {
   final _firebaseAuth = FirebaseAuth.instance;
+  final _googleSignIn = GoogleSignIn();
 
   @override
   Future<AuthResult> signIn({String email, String password}) async {
@@ -24,6 +27,7 @@ class AuthRepositoryImplementation implements AuthRepository {
   Future<void> signOut() async {
     return Future.wait([
       _firebaseAuth.signOut(),
+      _googleSignIn.signOut(),
     ]);
   }
 
@@ -62,5 +66,23 @@ class AuthRepositoryImplementation implements AuthRepository {
         message = "An undefined Error happened.";
     }
     return message;
+  }
+
+  @override
+  Future<AuthResult> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return null;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      return await _firebaseAuth.signInWithCredential(credential);
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
   }
 }

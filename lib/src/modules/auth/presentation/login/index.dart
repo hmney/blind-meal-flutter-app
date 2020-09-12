@@ -94,10 +94,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 26,
                         ),
                         SizedBox(width: 20),
-                        SvgPicture.asset(
-                          'assets/icons/social_media/google_icon.svg',
-                          width: 26,
-                          height: 26,
+                        GestureDetector(
+                          onTap: () => controller
+                              .authentication(AUTHENTICATION.GOOGLE_AUTH),
+                          child: SvgPicture.asset(
+                            'assets/icons/social_media/google_icon.svg',
+                            width: 26,
+                            height: 26,
+                          ),
                         ),
                       ],
                     )

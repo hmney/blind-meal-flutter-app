@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app/src/core/utils.dart';
 import 'package:app/src/modules/auth/domain/entities/user.dart';
 import 'package:app/src/modules/auth/domain/repository/auth_repository.dart';
@@ -6,7 +8,6 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:country_provider/country_provider.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -59,6 +60,7 @@ abstract class _AuthController with Store {
       appStarted: () async {
         try {
           //here we can load the neccessair data that we want with a splash screen
+          await Future.delayed(Duration(seconds: 10));
           final firebaseUser = await authRepository.getCurrentUser();
           if (firebaseUser.uid == null) {
             authState = AuthState.unauthenticated();
@@ -73,7 +75,7 @@ abstract class _AuthController with Store {
             else
               authState = AuthState.surveyNotFilled();
           }
-        } catch (e, s) {
+        } catch (e) {
           authState = AuthState.unauthenticated();
           // await Crashlytics.instance.recordError(e, s);
         }
@@ -113,6 +115,8 @@ abstract class _AuthController with Store {
       if (authentication == AUTHENTICATION.SIGN_UP)
         authResult =
             await authRepository.signUp(email: user.email, password: password);
+      if (authentication == AUTHENTICATION.GOOGLE_AUTH)
+        authResult = await authRepository.signInWithGoogle();
       if (authResult != null && authResult.user.uid != null) {
         if (authentication == AUTHENTICATION.SIGN_UP) {
           user.id = authResult.user.uid;
@@ -120,7 +124,21 @@ abstract class _AuthController with Store {
           userRepository.createNewUserDataToFirebase(user);
           Modular.to.pop();
         }
+        if (authentication == AUTHENTICATION.GOOGLE_AUTH) {
+          user = User.createNewUser(
+            id: authResult.user.uid,
+            firstName: authResult.user.displayName,
+            phone: authResult.user.phoneNumber,
+            email: authResult.user.email,
+            profilePicture: authResult.user.photoUrl,
+          );
+          if (authResult.additionalUserInfo.isNewUser) {
+            userRepository.createNewUserDataToFirebase(user);
+          }
+        }
         await addEvent(AuthEvent.loggedIn(authResult.user.uid));
+        BotToast.closeAllLoading();
+      } else {
         BotToast.closeAllLoading();
       }
     } on PlatformException catch (error) {
@@ -133,7 +151,6 @@ abstract class _AuthController with Store {
       showSnackBarMsg(
           scaffoldKey.currentState, authRepository.handleException(error));
       FocusScope.of(loginScaffoldKey.currentContext).requestFocus(FocusNode());
-      // await Crashlytics.instance.recordError(error.code, s);
     }
   }
 }
@@ -158,4 +175,6 @@ abstract class AuthState with _$AuthState {
 enum AUTHENTICATION {
   SIGN_IN,
   SIGN_UP,
+  GOOGLE_AUTH,
+  FACEBOOK_AUTH,
 }

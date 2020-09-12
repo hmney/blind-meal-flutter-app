@@ -6,4 +6,5 @@ abstract class AuthRepository {
   Future<void> signOut();
   Future<FirebaseUser> getCurrentUser();
   String handleException(e);
+  Future<AuthResult> signInWithGoogle();
 }
