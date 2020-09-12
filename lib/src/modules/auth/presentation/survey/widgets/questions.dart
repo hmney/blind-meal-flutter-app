@@ -28,6 +28,7 @@ class _QuestionsState extends State<Questions> {
   String get question => widget.question;
   List<String> get answers => widget.answers;
   final controller = Modular.get<SurveyController>();
+  final userController = Modular.get<AuthController>();
 
   Widget createBodyofQuestion(String questionType, List<String> answers) {
     switch (questionType) {
@@ -147,6 +148,7 @@ class _QuestionsState extends State<Questions> {
                             controller.maxPageIndex) {
                           BotToast.showLoading();
                           controller.createNewSurveyToFirebase();
+                          userController.currentUser.isSurveyFilled = true;
                           Modular.to.popUntil((r) => r.isFirst);
                           await Modular.get<AuthController>()
                               .addEvent(AuthEvent.goHome());
