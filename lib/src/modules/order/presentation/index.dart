@@ -10,6 +10,7 @@ import 'package:app/src/modules/order/presentation/widgets/select_meal.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -101,6 +102,9 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                         child: GestureDetector(
                           onTap: () {
                             if (controller.pageIndex > 0) {
+                              if (controller.pageIndex == 5) {
+                                controller.mealsNumber = 1;
+                              }
                               if (controller.pageIndex == 5 &&
                                   controller.blindMealExperience ==
                                       BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
@@ -161,6 +165,13 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                               Modular.to.pop();
                               BotToast.closeAllLoading();
                             } else {
+                              if (controller.pageIndex == 3) {
+                                controller.meals = ObservableList.of(
+                                  await controller.getRecommendedMeals(),
+                                );
+                                controller
+                                    .setMealSelected(controller.meals?.first);
+                              }
                               if (controller.pageIndex == 3 &&
                                   controller.blindMealExperience ==
                                       BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {

@@ -74,15 +74,45 @@ mixin _$OrderController on _OrderController, Store {
   final _$mealSelectedAtom = Atom(name: '_OrderController.mealSelected');
 
   @override
-  String get mealSelected {
+  Meal get mealSelected {
     _$mealSelectedAtom.reportRead();
     return super.mealSelected;
   }
 
   @override
-  set mealSelected(String value) {
+  set mealSelected(Meal value) {
     _$mealSelectedAtom.reportWrite(value, super.mealSelected, () {
       super.mealSelected = value;
+    });
+  }
+
+  final _$mealsAtom = Atom(name: '_OrderController.meals');
+
+  @override
+  ObservableList<Meal> get meals {
+    _$mealsAtom.reportRead();
+    return super.meals;
+  }
+
+  @override
+  set meals(ObservableList<Meal> value) {
+    _$mealsAtom.reportWrite(value, super.meals, () {
+      super.meals = value;
+    });
+  }
+
+  final _$mealsNumberAtom = Atom(name: '_OrderController.mealsNumber');
+
+  @override
+  int get mealsNumber {
+    _$mealsNumberAtom.reportRead();
+    return super.mealsNumber;
+  }
+
+  @override
+  set mealsNumber(int value) {
+    _$mealsNumberAtom.reportWrite(value, super.mealsNumber, () {
+      super.mealsNumber = value;
     });
   }
 
@@ -145,11 +175,33 @@ mixin _$OrderController on _OrderController, Store {
   }
 
   @override
-  void setMealSelected(String value) {
+  void setMealSelected(Meal value) {
     final _$actionInfo = _$_OrderControllerActionController.startAction(
         name: '_OrderController.setMealSelected');
     try {
       return super.setMealSelected(value);
+    } finally {
+      _$_OrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void incMealsNumber() {
+    final _$actionInfo = _$_OrderControllerActionController.startAction(
+        name: '_OrderController.incMealsNumber');
+    try {
+      return super.incMealsNumber();
+    } finally {
+      _$_OrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decMealsNumber() {
+    final _$actionInfo = _$_OrderControllerActionController.startAction(
+        name: '_OrderController.decMealsNumber');
+    try {
+      return super.decMealsNumber();
     } finally {
       _$_OrderControllerActionController.endAction(_$actionInfo);
     }
@@ -162,7 +214,9 @@ pageIndex: ${pageIndex},
 budget: ${budget},
 levelofHungriness: ${levelofHungriness},
 blindMealExperience: ${blindMealExperience},
-mealSelected: ${mealSelected}
+mealSelected: ${mealSelected},
+meals: ${meals},
+mealsNumber: ${mealsNumber}
     ''';
   }
 }

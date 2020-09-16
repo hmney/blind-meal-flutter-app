@@ -1,4 +1,5 @@
 import 'package:app/src/modules/auth/domain/repository/auth_repository.dart';
+import 'package:app/src/modules/order/domain/entities/meal.dart';
 import 'package:app/src/modules/order/domain/entities/order.dart';
 import 'package:app/src/modules/order/domain/repository/order_repository.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,10 +61,37 @@ abstract class _OrderController with Store {
   }
 
   @observable
-  String mealSelected;
+  Meal mealSelected;
 
   @action
-  void setMealSelected(String value) => mealSelected = value;
+  void setMealSelected(Meal value) => mealSelected = value;
+
+  @observable
+  ObservableList<Meal> meals = ObservableList<Meal>();
+
+  Future<List<Meal>> getRecommendedMeals() async {
+    var currentUser = await authRepository.getCurrentUser();
+    var order = Order.createNewOrder(
+      '',
+      currentUser.uid,
+      feelingTextController.text,
+      levelofHungriness / 5,
+      budget,
+      blindMealExperience == BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND
+          ? 'COMPLETELY_BLIND'
+          : 'GET_SUGGESTIONS',
+    );
+    return await orderRepository.getRecommendedMeals(order);
+  }
+
+  @observable
+  int mealsNumber = 1;
+
+  @action
+  void incMealsNumber() => mealsNumber++;
+
+  @action
+  void decMealsNumber() => mealsNumber - 1 > 0 ? mealsNumber-- : mealsNumber;
 }
 
 enum BLIND_MEAL_EXPERIENCE {
