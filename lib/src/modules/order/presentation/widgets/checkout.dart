@@ -1,5 +1,8 @@
 import 'package:app/src/core/styles.dart';
+import 'package:app/src/modules/order/presentation/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class Checkout extends StatefulWidget {
   @override
@@ -7,6 +10,8 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
+  final controller = Modular.get<OrderController>();
+
   String paymentMethod = 'Cash';
   @override
   Widget build(BuildContext context) {
@@ -24,10 +29,12 @@ class _CheckoutState extends State<Checkout> {
                     color: Colors.grey,
                   ),
                 ),
-                Text(
-                  '140 AED',
-                  style: TextStyle(
-                    fontSize: 18,
+                Observer(
+                  builder: (_) => Text(
+                    '${(int.parse(controller.mealSelected.price) * controller.mealsNumber)} AED',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ],
@@ -45,20 +52,24 @@ class _CheckoutState extends State<Checkout> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.remove_circle_outline,
+                    IconButton(
+                      onPressed: () => controller.decMealsNumber(),
+                      icon: Icon(Icons.remove_circle_outline),
                       color: AppTheme.primaryColor,
                     ),
                     SizedBox(width: 10),
-                    Text(
-                      '1',
-                      style: TextStyle(
-                        fontSize: 18,
+                    Observer(
+                      builder: (_) => Text(
+                        controller.mealsNumber.toString(),
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Icon(
-                      Icons.add_circle,
+                    IconButton(
+                      onPressed: () => controller.incMealsNumber(),
+                      icon: Icon(Icons.add_circle),
                       color: AppTheme.primaryColor,
                     ),
                   ],
