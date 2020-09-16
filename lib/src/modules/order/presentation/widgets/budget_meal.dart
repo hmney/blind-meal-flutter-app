@@ -21,6 +21,7 @@ class _BudgetofMealState extends State<BudgetofMeal> {
     return Column(
       children: [
         GestureDetector(
+          onTap: () => controller.incBudget(),
           onTapDown: (TapDownDetails details) {
             _timer1 = Timer.periodic(Duration(milliseconds: 50), (t) {
               controller.incBudget();
@@ -64,6 +65,7 @@ class _BudgetofMealState extends State<BudgetofMeal> {
         ),
         SizedBox(height: 20),
         GestureDetector(
+          onTap: () => controller.decBudget(),
           onTapDown: (TapDownDetails details) {
             _timer2 = Timer.periodic(Duration(milliseconds: 50), (t) {
               controller.decBudget();
