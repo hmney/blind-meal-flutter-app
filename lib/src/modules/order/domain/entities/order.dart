@@ -47,4 +47,16 @@ class Order {
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
   Map<String, dynamic> toJson() => _$OrderToJson(this);
+
+  @override
+  String toString() {
+    return '''
+      orderId: $orderId,
+      userId: $userId,
+      feeling: $feeling,
+      hungrinessLevel: $hungrinessLevel,
+      mealBudget: $mealBudget,
+      experienceType: $experienceType,
+    ''';
+  }
 }
