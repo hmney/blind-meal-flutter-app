@@ -19,6 +19,7 @@ dependencies:
   json_serializable: ^3.4.0
   firebase_core: ^0.4.0+8
   firebase_auth: ^0.15.0+1
+  google_sign_in: ^4.5.3
   cloud_firestore: ^0.13.6
   firebase_analytics: ^5.0.16
   introduction_screen: ^1.0.7
@@ -32,6 +33,13 @@ dependencies:
   country_icons: ^1.1.1
   percent_indicator: ^2.1.5
   device_preview: ^0.4.8
+  flutter_signin_button: ^1.0.0
+  dio: ^3.0.10
+  equatable: ^1.2.5
+  google_maps_flutter: ^0.5.32
+  geolocator: ^6.0.0+4
+  geocoder: ^0.2.1
+  http: ^0.12.2
 
 
 
@@ -60,3 +68,5 @@ flutter:
     - assets/images/
     - assets/images/diets/
     - assets/images/recommendedFood/
+    - assets/images/splash/
+    - assets/map_style.json
