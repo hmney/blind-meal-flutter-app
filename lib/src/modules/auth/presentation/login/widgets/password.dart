@@ -28,33 +28,17 @@ class _PasswordFieldState extends State<PasswordField> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Password',
-                style: TextStyle(
-                  color: Color(0xff707070),
-                  fontFamily: 'Roboto',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+        Container(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Password',
+            style: TextStyle(
+              color: Color(0xff707070),
+              fontFamily: 'Roboto',
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
             ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Min 8 characters*',
-                style: TextStyle(
-                  color: Color(0xff707070),
-                  fontFamily: 'Roboto',
-                  fontSize: 10,
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
         SizedBox(height: 10),
         Container(
