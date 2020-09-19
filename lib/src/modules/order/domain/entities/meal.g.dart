@@ -14,7 +14,7 @@ Meal _$MealFromJson(Map<String, dynamic> json) {
         (json['components'] as List)?.map((e) => e as String)?.toList(),
     description: json['description'] as String,
     image: json['image'] as String,
-    price: json['original_price'].toString(),
+    price: (json['original_price'] as num)?.toDouble(),
   );
 }
 

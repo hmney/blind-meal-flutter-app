@@ -14,7 +14,7 @@ class Meal extends Equatable {
   final String description;
   final String image;
   @JsonKey(name: 'original_price')
-  final String price;
+  final double price;
 
   Meal({
     this.id,

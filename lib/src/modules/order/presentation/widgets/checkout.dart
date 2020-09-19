@@ -31,7 +31,7 @@ class _CheckoutState extends State<Checkout> {
                 ),
                 Observer(
                   builder: (_) => Text(
-                    '${(int.parse(controller.mealSelected.price) * controller.mealsNumber)} AED',
+                    '${(controller.mealSelected.price * controller.mealsNumber)} AED',
                     style: TextStyle(
                       fontSize: 18,
                     ),
