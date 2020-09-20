@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "176602073121-54tce1logdetjqg7tt8n0r73l8tsmuo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blind.meal",
+            "certificate_hash": "1df9fe529b2b54c15ec1173be7cebfbf54e60d28"
+          }
+        },
+        {
           "client_id": "176602073121-am762jopsd6hmemu0338f30fhajmhtra.apps.googleusercontent.com",
           "client_type": 3
         }
