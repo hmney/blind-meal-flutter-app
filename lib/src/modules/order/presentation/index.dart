@@ -1,16 +1,17 @@
-import 'package:app/src/common/buttons/survey_button.dart';
+import 'package:app/src/common/buttons/button.dart';
 import 'package:app/src/core/styles.dart';
+import 'package:app/src/modules/order/domain/entities/order.dart';
 import 'package:app/src/modules/order/presentation/controller.dart';
 import 'package:app/src/modules/order/presentation/widgets/blindmeal_experience.dart';
 import 'package:app/src/modules/order/presentation/widgets/budget_meal.dart';
 import 'package:app/src/modules/order/presentation/widgets/checkout.dart';
+import 'package:app/src/modules/order/presentation/widgets/delivery_location.dart';
 import 'package:app/src/modules/order/presentation/widgets/describe_feeling.dart';
 import 'package:app/src/modules/order/presentation/widgets/level_hungriness.dart';
 import 'package:app/src/modules/order/presentation/widgets/select_meal.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobx/mobx.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
     "How do you feel ?",
     "What's your level of hungriness ?",
     "What's your budget for this meal ?",
+    "Set delivery location",
     "Which blind meal experience you want ?",
     "Select a meal from sugesstions",
     "Checkout",
@@ -37,10 +39,12 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
       case 2:
         return BudgetofMeal();
       case 3:
-        return TypeofBlindMealExperience();
+        return DeliveryLocationWidget();
       case 4:
-        return SelectMeal();
+        return TypeofBlindMealExperience();
       case 5:
+        return SelectMeal();
+      case 6:
         return Checkout();
       default:
         return SizedBox();
@@ -50,16 +54,20 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
   bool checkIfOrderQuestionAnswered(int index) {
     switch (index) {
       case 0:
-        return controller.feelingTextController.text.isNotEmpty;
+        return controller.order.userFeeling.isNotEmpty;
       case 1:
         return true;
       case 2:
-        return controller.budget > 0;
+        return controller.order.mealBudget > 0;
       case 3:
-        return controller.blindMealExperience != BLIND_MEAL_EXPERIENCE.NONE;
+        return controller.order.deliveryLocation != null;
       case 4:
-        return controller.mealSelected != null;
+        return controller.order.blindMealExperience !=
+            BLIND_MEAL_EXPERIENCE.NONE;
       case 5:
+        return true;
+      // return controller.orderDetails.mealSelected != null;
+      case 6:
         return true;
       default:
         return false;
@@ -69,6 +77,7 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppTheme.backgroundColor,
       body: GestureDetector(
         onTap: () {
@@ -102,13 +111,13 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                         child: GestureDetector(
                           onTap: () {
                             if (controller.pageIndex > 0) {
-                              if (controller.pageIndex == 5) {
-                                controller.mealsNumber = 1;
+                              if (controller.pageIndex == 6) {
+                                controller.order.mealsNumber = 1;
                               }
-                              if (controller.pageIndex == 5 &&
-                                  controller.blindMealExperience ==
+                              if (controller.pageIndex == 6 &&
+                                  controller.order.blindMealExperience ==
                                       BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
-                                controller.pageController.animateToPage(3,
+                                controller.pageController.animateToPage(4,
                                     duration: Duration(milliseconds: 10),
                                     curve: Curves.easeIn);
                               } else {
@@ -152,7 +161,7 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                       ),
                       createBodyofOrderQuestion(index),
                       Expanded(child: SizedBox(height: 20)),
-                      SurveyButton(
+                      Button(
                         onPressed: () async {
                           FocusScope.of(context).unfocus();
                           if (!checkIfOrderQuestionAnswered(index)) {
@@ -165,17 +174,16 @@ class _OrderScreenState extends ModularState<OrderScreen, OrderController> {
                               Modular.to.pop();
                               BotToast.closeAllLoading();
                             } else {
-                              if (controller.pageIndex == 3) {
-                                controller.meals = ObservableList.of(
-                                  await controller.getRecommendedMeals(),
-                                );
-                                controller
-                                    .setMealSelected(controller.meals?.first);
+                              if (controller.pageIndex == 4) {
+                                controller.order.mealsSuggested =
+                                    await controller.getRecommendedMeals();
+                                controller.order.setSelectedMeal(
+                                    controller.order.mealsSuggested?.first);
                               }
-                              if (controller.pageIndex == 3 &&
-                                  controller.blindMealExperience ==
+                              if (controller.pageIndex == 4 &&
+                                  controller.order.blindMealExperience ==
                                       BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND) {
-                                controller.pageController.animateToPage(5,
+                                controller.pageController.animateToPage(6,
                                     duration: Duration(milliseconds: 10),
                                     curve: Curves.easeIn);
                               } else {

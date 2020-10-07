@@ -31,7 +31,7 @@ class _CheckoutState extends State<Checkout> {
                 ),
                 Observer(
                   builder: (_) => Text(
-                    '${(controller.mealSelected.price * controller.mealsNumber)} AED',
+                    '${controller.order.mealSelected.price.ceil() * controller.order.mealsNumber} AED',
                     style: TextStyle(
                       fontSize: 18,
                     ),
@@ -53,14 +53,14 @@ class _CheckoutState extends State<Checkout> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      onPressed: () => controller.decMealsNumber(),
+                      onPressed: () => controller.order.decMealsNumber(),
                       icon: Icon(Icons.remove_circle_outline),
                       color: AppTheme.primaryColor,
                     ),
                     SizedBox(width: 10),
                     Observer(
                       builder: (_) => Text(
-                        controller.mealsNumber.toString(),
+                        controller.order.mealsNumber.toString(),
                         style: TextStyle(
                           fontSize: 18,
                         ),
@@ -68,7 +68,7 @@ class _CheckoutState extends State<Checkout> {
                     ),
                     SizedBox(width: 10),
                     IconButton(
-                      onPressed: () => controller.incMealsNumber(),
+                      onPressed: () => controller.order.incMealsNumber(),
                       icon: Icon(Icons.add_circle),
                       color: AppTheme.primaryColor,
                     ),

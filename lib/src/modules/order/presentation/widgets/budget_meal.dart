@@ -21,10 +21,10 @@ class _BudgetofMealState extends State<BudgetofMeal> {
     return Column(
       children: [
         GestureDetector(
-          onTap: () => controller.incBudget(),
+          onTap: () => controller.order.incBudget(),
           onTapDown: (TapDownDetails details) {
             _timer1 = Timer.periodic(Duration(milliseconds: 50), (t) {
-              controller.incBudget();
+              controller.order.incBudget();
             });
           },
           onTapUp: (TapUpDetails details) {
@@ -57,7 +57,7 @@ class _BudgetofMealState extends State<BudgetofMeal> {
           child: Center(
             child: Observer(
               builder: (_) => Text(
-                '${controller.budget} AED',
+                '${controller.order.mealBudget} AED',
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
             ),
@@ -65,10 +65,10 @@ class _BudgetofMealState extends State<BudgetofMeal> {
         ),
         SizedBox(height: 20),
         GestureDetector(
-          onTap: () => controller.decBudget(),
+          onTap: () => controller.order.decBudget(),
           onTapDown: (TapDownDetails details) {
             _timer2 = Timer.periodic(Duration(milliseconds: 50), (t) {
-              controller.decBudget();
+              controller.order.decBudget();
             });
           },
           onTapUp: (TapUpDetails details) {

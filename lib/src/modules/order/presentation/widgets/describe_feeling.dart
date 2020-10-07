@@ -12,7 +12,7 @@ class _DescribeFeelingState extends State<DescribeFeeling> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller.feelingTextController,
+      onChanged: (value) => controller.order.userFeeling = value,
       decoration: InputDecoration(
         fillColor: Colors.white,
         filled: true,

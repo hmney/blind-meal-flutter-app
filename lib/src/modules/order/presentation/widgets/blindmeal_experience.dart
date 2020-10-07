@@ -1,4 +1,5 @@
 import 'package:app/src/core/styles.dart';
+import 'package:app/src/modules/order/domain/entities/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app/src/modules/order/presentation/controller.dart';
@@ -20,7 +21,7 @@ class _TypeofBlindMealExperienceState extends State<TypeofBlindMealExperience> {
       children: [
         Observer(
           builder: (_) => GestureDetector(
-            onTap: () => controller
+            onTap: () => controller.order
                 .setBlindMealExperience(BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND),
             child: Container(
               width: 160,
@@ -31,7 +32,7 @@ class _TypeofBlindMealExperienceState extends State<TypeofBlindMealExperience> {
                 border: Border.all(
                   color: AppTheme.primaryColor,
                   width: 2,
-                  style: (controller.blindMealExperience ==
+                  style: (controller.order.blindMealExperience ==
                           BLIND_MEAL_EXPERIENCE.COMPLETELY_BLIND)
                       ? BorderStyle.solid
                       : BorderStyle.none,
@@ -65,7 +66,7 @@ class _TypeofBlindMealExperienceState extends State<TypeofBlindMealExperience> {
         SizedBox(height: 60),
         Observer(
           builder: (_) => GestureDetector(
-            onTap: () => controller
+            onTap: () => controller.order
                 .setBlindMealExperience(BLIND_MEAL_EXPERIENCE.GET_SUGGESTIONS),
             child: Container(
               width: 160,
@@ -76,7 +77,7 @@ class _TypeofBlindMealExperienceState extends State<TypeofBlindMealExperience> {
                 border: Border.all(
                   color: AppTheme.primaryColor,
                   width: 2,
-                  style: (controller.blindMealExperience ==
+                  style: (controller.order.blindMealExperience ==
                           BLIND_MEAL_EXPERIENCE.GET_SUGGESTIONS)
                       ? BorderStyle.solid
                       : BorderStyle.none,

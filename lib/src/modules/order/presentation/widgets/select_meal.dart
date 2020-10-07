@@ -24,71 +24,73 @@ class _SelectMealState extends State<SelectMeal> {
         crossAxisCount: 2,
         mainAxisSpacing: 55,
         crossAxisSpacing: 55,
-        children: controller.meals
-            .map(
-              (element) => Observer(
-                builder: (context) => GestureDetector(
-                  onTap: () => controller.setMealSelected(element),
-                  onLongPress: () {
-                    _overlayPopup = _createMealInfoPopUp(element);
-                    Overlay.of(context).insert(_overlayPopup);
-                  },
-                  onLongPressEnd: (_) {
-                    _overlayPopup?.remove();
-                  },
-                  child: Stack(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppTheme.primaryColor,
-                            width: 4,
-                            style: controller.mealSelected == element
-                                ? BorderStyle.solid
-                                : BorderStyle.none,
+        children: controller.order.mealsSuggested != null
+            ? controller.order.mealsSuggested
+                ?.map(
+                  (element) => Observer(
+                    builder: (context) => GestureDetector(
+                      onTap: () => controller.order.setSelectedMeal(element),
+                      onLongPress: () {
+                        _overlayPopup = _createMealInfoPopUp(element);
+                        Overlay.of(context).insert(_overlayPopup);
+                      },
+                      onLongPressEnd: (_) {
+                        _overlayPopup?.remove();
+                      },
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppTheme.primaryColor,
+                                width: 4,
+                                style: controller.order.mealSelected == element
+                                    ? BorderStyle.solid
+                                    : BorderStyle.none,
+                              ),
+                              image: DecorationImage(
+                                image: NetworkImage(element.image),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                           ),
-                          image: DecorationImage(
-                            image: NetworkImage(element.image),
-                            fit: BoxFit.fill,
+                          Container(
+                            alignment: Alignment.bottomCenter,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: <Color>[
+                                  Colors.black.withAlpha(0),
+                                  Colors.black12,
+                                  Colors.black45
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          Container(
+                            alignment: Alignment.bottomCenter,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            child: Text(
+                              element.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'Georgia',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: <Color>[
-                              Colors.black.withAlpha(0),
-                              Colors.black12,
-                              Colors.black45
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        child: Text(
-                          element.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Georgia',
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            )
-            .toList(),
+                )
+                ?.toList()
+            : [],
       ),
     );
   }

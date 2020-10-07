@@ -9,6 +9,23 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$OrderController on _OrderController, Store {
+  final _$deliveryLocationAddressAtom =
+      Atom(name: '_OrderController.deliveryLocationAddress');
+
+  @override
+  TextEditingController get deliveryLocationAddress {
+    _$deliveryLocationAddressAtom.reportRead();
+    return super.deliveryLocationAddress;
+  }
+
+  @override
+  set deliveryLocationAddress(TextEditingController value) {
+    _$deliveryLocationAddressAtom
+        .reportWrite(value, super.deliveryLocationAddress, () {
+      super.deliveryLocationAddress = value;
+    });
+  }
+
   final _$pageIndexAtom = Atom(name: '_OrderController.pageIndex');
 
   @override
@@ -24,100 +41,19 @@ mixin _$OrderController on _OrderController, Store {
     });
   }
 
-  final _$budgetAtom = Atom(name: '_OrderController.budget');
-
-  @override
-  int get budget {
-    _$budgetAtom.reportRead();
-    return super.budget;
-  }
-
-  @override
-  set budget(int value) {
-    _$budgetAtom.reportWrite(value, super.budget, () {
-      super.budget = value;
-    });
-  }
-
-  final _$levelofHungrinessAtom =
-      Atom(name: '_OrderController.levelofHungriness');
-
-  @override
-  double get levelofHungriness {
-    _$levelofHungrinessAtom.reportRead();
-    return super.levelofHungriness;
-  }
-
-  @override
-  set levelofHungriness(double value) {
-    _$levelofHungrinessAtom.reportWrite(value, super.levelofHungriness, () {
-      super.levelofHungriness = value;
-    });
-  }
-
-  final _$blindMealExperienceAtom =
-      Atom(name: '_OrderController.blindMealExperience');
-
-  @override
-  BLIND_MEAL_EXPERIENCE get blindMealExperience {
-    _$blindMealExperienceAtom.reportRead();
-    return super.blindMealExperience;
-  }
-
-  @override
-  set blindMealExperience(BLIND_MEAL_EXPERIENCE value) {
-    _$blindMealExperienceAtom.reportWrite(value, super.blindMealExperience, () {
-      super.blindMealExperience = value;
-    });
-  }
-
-  final _$mealSelectedAtom = Atom(name: '_OrderController.mealSelected');
-
-  @override
-  Meal get mealSelected {
-    _$mealSelectedAtom.reportRead();
-    return super.mealSelected;
-  }
-
-  @override
-  set mealSelected(Meal value) {
-    _$mealSelectedAtom.reportWrite(value, super.mealSelected, () {
-      super.mealSelected = value;
-    });
-  }
-
-  final _$mealsAtom = Atom(name: '_OrderController.meals');
-
-  @override
-  ObservableList<Meal> get meals {
-    _$mealsAtom.reportRead();
-    return super.meals;
-  }
-
-  @override
-  set meals(ObservableList<Meal> value) {
-    _$mealsAtom.reportWrite(value, super.meals, () {
-      super.meals = value;
-    });
-  }
-
-  final _$mealsNumberAtom = Atom(name: '_OrderController.mealsNumber');
-
-  @override
-  int get mealsNumber {
-    _$mealsNumberAtom.reportRead();
-    return super.mealsNumber;
-  }
-
-  @override
-  set mealsNumber(int value) {
-    _$mealsNumberAtom.reportWrite(value, super.mealsNumber, () {
-      super.mealsNumber = value;
-    });
-  }
-
   final _$_OrderControllerActionController =
       ActionController(name: '_OrderController');
+
+  @override
+  void setDeliveryLocationAddress(String value) {
+    final _$actionInfo = _$_OrderControllerActionController.startAction(
+        name: '_OrderController.setDeliveryLocationAddress');
+    try {
+      return super.setDeliveryLocationAddress(value);
+    } finally {
+      _$_OrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void onChangePageIndex(int index) {
@@ -131,92 +67,10 @@ mixin _$OrderController on _OrderController, Store {
   }
 
   @override
-  void incBudget() {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.incBudget');
-    try {
-      return super.incBudget();
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void decBudget() {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.decBudget');
-    try {
-      return super.decBudget();
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setLevelofHungriness(double value) {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.setLevelofHungriness');
-    try {
-      return super.setLevelofHungriness(value);
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setBlindMealExperience(BLIND_MEAL_EXPERIENCE value) {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.setBlindMealExperience');
-    try {
-      return super.setBlindMealExperience(value);
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setMealSelected(Meal value) {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.setMealSelected');
-    try {
-      return super.setMealSelected(value);
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void incMealsNumber() {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.incMealsNumber');
-    try {
-      return super.incMealsNumber();
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void decMealsNumber() {
-    final _$actionInfo = _$_OrderControllerActionController.startAction(
-        name: '_OrderController.decMealsNumber');
-    try {
-      return super.decMealsNumber();
-    } finally {
-      _$_OrderControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
-pageIndex: ${pageIndex},
-budget: ${budget},
-levelofHungriness: ${levelofHungriness},
-blindMealExperience: ${blindMealExperience},
-mealSelected: ${mealSelected},
-meals: ${meals},
-mealsNumber: ${mealsNumber}
+deliveryLocationAddress: ${deliveryLocationAddress},
+pageIndex: ${pageIndex}
     ''';
   }
 }
