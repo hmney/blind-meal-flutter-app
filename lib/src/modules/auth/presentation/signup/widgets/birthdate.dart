@@ -15,6 +15,7 @@ class _BirthdateFieldState extends State<BirthdateField> {
   final _birthdateController = TextEditingController();
   AuthController get _controller => widget.controller;
   var _birthdate;
+
   String _validatorBirthdate(String value) {
     if (value.isEmpty) return 'Enter your birthdate';
     return null;
@@ -48,6 +49,12 @@ class _BirthdateFieldState extends State<BirthdateField> {
       _birthdateController.text =
           DateFormat('d MMMM y').format(birthdatePicked);
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _birthdateController.dispose();
   }
 
   @override

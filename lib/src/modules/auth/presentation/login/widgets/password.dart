@@ -25,6 +25,12 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [

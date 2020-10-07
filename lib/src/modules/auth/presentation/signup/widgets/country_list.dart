@@ -26,6 +26,12 @@ class _CountryFieldState extends State<CountryField> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _countryListController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [

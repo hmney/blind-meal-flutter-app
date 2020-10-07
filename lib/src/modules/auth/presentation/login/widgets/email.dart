@@ -25,6 +25,12 @@ class _EmailFieldState extends State<EmailField> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [

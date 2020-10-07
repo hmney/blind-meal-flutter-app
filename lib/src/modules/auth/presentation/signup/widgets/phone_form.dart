@@ -28,6 +28,12 @@ class _PhoneFormWidgetState extends State<PhoneFormWidget> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _phoneController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
