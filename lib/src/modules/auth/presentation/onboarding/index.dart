@@ -60,7 +60,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
               PageViewModel(
                 title: 'What we need from you',
                 body:
-                    'We will save you the hassle of food choice and deliver to you what will perfectly suit your hunger.',
+                    'All what you have to do is to fill a quick survey once about your food preferences and let our IA bring you the best to eat',
                 image: Center(
                   child: SvgPicture.asset(
                     'assets/onboarding/onboarding_4.svg',
