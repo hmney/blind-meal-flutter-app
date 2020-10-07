@@ -1,10 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:equatable/equatable.dart';
 
 part 'meal.g.dart';
 
 @JsonSerializable()
-class Meal extends Equatable {
+class Meal {
   @JsonKey(name: 'uid')
   final String id;
   @JsonKey(name: 'title')
@@ -25,12 +24,7 @@ class Meal extends Equatable {
     this.price,
   });
 
-  @override
-  List<Object> get props => [id, name, ingredients, description, image, price];
   factory Meal.fromJson(Map<String, dynamic> json) => _$MealFromJson(json);
 
   Map<String, dynamic> toJson() => _$MealToJson(this);
-
-  @override
-  bool get stringify => true;
 }
