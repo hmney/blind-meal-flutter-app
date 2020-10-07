@@ -1,4 +1,4 @@
-import 'package:app/src/common/buttons/survey_button.dart';
+import 'package:app/src/common/buttons/button.dart';
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/module.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
@@ -49,14 +49,14 @@ class _SurveyScreenState extends ModularState<SurveyScreen, SurveyController> {
                     wordSpacing: 1),
               ),
               Spacer(),
-              SurveyButton(
+              Button(
                 onPressed: () async {
                   await AuthModule.toStartSurvey();
                 },
                 style: BUTTON_STYLE.READY,
               ),
               SizedBox(height: 10),
-              SurveyButton(
+              Button(
                 onPressed: () async {
                   if (Modular.to.canPop()) Modular.to.pop();
                   await Modular.get<AuthController>()

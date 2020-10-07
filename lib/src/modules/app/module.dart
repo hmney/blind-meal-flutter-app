@@ -1,5 +1,6 @@
 import 'package:app/src/core/theme.dart';
 import 'package:app/src/modules/auth/module.dart';
+import 'package:app/src/modules/maps/module.dart';
 import 'package:app/src/modules/order/module.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -10,11 +11,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 class AppModule extends MainModule {
   final authModule = AuthModule();
   final orderModule = OrderModule();
+  final mapsModule = MapsModule();
   final analytics = FirebaseAnalytics();
   @override
   List<Bind> get binds => [
         ...authModule.binds,
         ...orderModule.binds,
+        ...mapsModule.binds,
         Bind((i) => analytics),
       ];
 
@@ -22,6 +25,7 @@ class AppModule extends MainModule {
   List<Router> get routers => [
         Router('', module: authModule),
         Router('', module: orderModule),
+        Router('', module: mapsModule),
       ];
 
   @override

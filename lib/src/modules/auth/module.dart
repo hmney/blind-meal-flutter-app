@@ -2,7 +2,6 @@ import 'package:app/src/modules/auth/data/repository/auth_repository_implementat
 import 'package:app/src/modules/auth/data/repository/user_repository_implementation.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/index.dart';
-import 'package:app/src/modules/auth/presentation/login/index.dart';
 import 'package:app/src/modules/auth/presentation/signup/country_picker/index.dart';
 import 'package:app/src/modules/auth/presentation/signup/index.dart';
 import 'package:app/src/modules/auth/presentation/survey/controller.dart';

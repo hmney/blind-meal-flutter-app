@@ -1,4 +1,4 @@
-import 'package:app/src/common/buttons/survey_button.dart';
+import 'package:app/src/common/buttons/button.dart';
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/maps/domain/entities/delivery_location.dart';
 import 'package:app/src/modules/maps/module.dart';

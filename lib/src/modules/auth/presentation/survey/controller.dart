@@ -187,6 +187,7 @@ abstract class _SurveyController with Store {
       tasteDegree / 5,
       moodAndChoiceOfFood / 5,
     );
-    await userRepository.createNewSurveyToFirebase(currentUser.uid, survey);
+    await userRepository.createNewSurveyForUserInFirebase(
+        currentUser.uid, survey);
   }
 }

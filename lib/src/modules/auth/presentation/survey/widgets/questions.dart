@@ -1,4 +1,4 @@
-import 'package:app/src/common/buttons/survey_button.dart';
+import 'package:app/src/common/buttons/button.dart';
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
 import 'package:app/src/modules/auth/presentation/survey/controller.dart';
@@ -138,7 +138,7 @@ class _QuestionsState extends State<Questions> {
                   ),
                   createBodyofQuestion(questionType, answers),
                   Expanded(child: SizedBox(height: 20)),
-                  SurveyButton(
+                  Button(
                     onPressed: () async {
                       FocusScope.of(context).unfocus();
                       if (!checkIfQuestionAnswered(questionType)) {

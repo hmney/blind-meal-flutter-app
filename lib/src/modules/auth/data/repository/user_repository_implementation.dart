@@ -13,13 +13,13 @@ class UserRepositoryImplementation extends UserRepository {
 
   // This function responsible to create a new user in signup
   @override
-  Future<void> createNewUserDataToFirebase(User user) async {
+  Future<void> createNewUserInFirebase(User user) async {
     await _userCollection.document(user.id).setData(user.toJson());
   }
 
   // This function responsible to set data to firebase analytics in signup
   @override
-  void createNewUserDataToAnalytics(User user) {
+  void createNewUserInAnalytics(User user) {
     Crashlytics.instance
       ..setUserName(user.username)
       ..setUserIdentifier(user.id);
@@ -42,7 +42,8 @@ class UserRepositoryImplementation extends UserRepository {
 
   // This function responsible to set survey data to firestore
   @override
-  Future<void> createNewSurveyToFirebase(String userId, Survey survey) async {
+  Future<void> createNewSurveyForUserInFirebase(
+      String userId, Survey survey) async {
     await _userCollection.document(userId).updateData({'isSurveyFilled': true});
     await _userCollection
         .document(userId)

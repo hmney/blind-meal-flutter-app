@@ -121,7 +121,7 @@ abstract class _AuthController with Store {
         if (authentication == AUTHENTICATION.SIGN_UP) {
           user.id = authResult.user.uid;
           user.accountCreationTime = DateTime.now().toUtc();
-          userRepository.createNewUserDataToFirebase(user);
+          userRepository.createNewUserInFirebase(user);
           Modular.to.pop();
         }
         if (authentication == AUTHENTICATION.GOOGLE_AUTH) {
@@ -133,7 +133,7 @@ abstract class _AuthController with Store {
             profilePicture: authResult.user.photoUrl,
           );
           if (authResult.additionalUserInfo.isNewUser) {
-            userRepository.createNewUserDataToFirebase(user);
+            userRepository.createNewUserInFirebase(user);
           }
         }
         await addEvent(AuthEvent.loggedIn(authResult.user.uid));
