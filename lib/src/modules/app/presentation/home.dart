@@ -1,6 +1,7 @@
 import 'package:app/src/core/styles.dart';
 import 'package:app/src/modules/auth/module.dart';
 import 'package:app/src/modules/auth/presentation/controller.dart';
+import 'package:app/src/modules/maps/module.dart';
 import 'package:app/src/modules/order/module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -34,6 +35,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Center(
           child: ListView(
             children: [
+              ListTile(
+                leading: Icon(
+                  Icons.star,
+                ),
+                title: Text('Saved Places'),
+                onTap: () async {
+                  MapsModule.toSavedPlacesScreen();
+                },
+              ),
               ListTile(
                 leading: Icon(
                   Icons.exit_to_app,
