@@ -1,18 +1,18 @@
 import 'package:app/src/core/styles.dart';
 import 'package:flutter/material.dart';
 
-class SurveyButton extends StatefulWidget {
+class Button extends StatefulWidget {
   final VoidCallback onPressed;
   final BUTTON_STYLE style;
-  SurveyButton({
+  Button({
     @required this.onPressed,
     @required this.style,
   });
   @override
-  _SurveyButtonState createState() => _SurveyButtonState();
+  _ButtonState createState() => _ButtonState();
 }
 
-class _SurveyButtonState extends State<SurveyButton> {
+class _ButtonState extends State<Button> {
   VoidCallback get onPressed => widget.onPressed;
   BUTTON_STYLE get style => widget.style;
 
@@ -37,6 +37,8 @@ class _SurveyButtonState extends State<SurveyButton> {
         return 'Continue';
       case BUTTON_STYLE.DONE:
         return 'Done';
+      case BUTTON_STYLE.SAVE:
+        return 'Save';
       default:
         return '';
     }
@@ -56,10 +58,11 @@ class _SurveyButtonState extends State<SurveyButton> {
           borderRadius: BorderRadius.circular(25.0),
         ),
         color: _getButtonColor(),
-        elevation:
-            (style == BUTTON_STYLE.CONTINUE || style == BUTTON_STYLE.DONE)
-                ? 5
-                : 0,
+        elevation: (style == BUTTON_STYLE.CONTINUE ||
+                style == BUTTON_STYLE.DONE ||
+                style == BUTTON_STYLE.SAVE)
+            ? 5
+            : 0,
         child: Row(
           children: [
             Spacer(),
@@ -93,4 +96,5 @@ enum BUTTON_STYLE {
   NOT_NOW,
   CONTINUE,
   DONE,
+  SAVE,
 }
